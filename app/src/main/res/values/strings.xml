@@ -31,4 +31,8 @@
     <string name="artist_name">Artist Name</string>
     <string name="top_albulms">Top Albulms</string>
     <string name="top_tracks">top tracks</string>
+    <string name="profileAlbulmInfo">artist name * genre * release date</string>
+    <string name="reviewInfo">total # of ratings * overall score</string>
+    <string name="review">Review</string>
+    <string name="top_ratings">top ratings</string>
 </resources>
