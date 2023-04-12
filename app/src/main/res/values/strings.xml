@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">harmonicHyperspace</string>
+    <string name="harmonic_hyperspace">Harmonic Hyperspace</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_with_google">sign up with Google</string>
+    <string name="email">email     </string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="or">or</string>
+    <string name="log_in">Log In</string>
+    <string name="search">search</string>
+    <string name="cancel">cancel</string>
+    <string name="searchText">Search albulms, tracks, or artists</string>
+    <string name="is_just_a_logo">is just a logo</string>
+    <string name="albulms">albulms</string>
+    <string name="artists">artists</string>
+    <string name="tracks">Tracks</string>
+    <string name="review_track">Review Track</string>
+    <string name="track_name">Track Name</string>
+    <string name="artist_track">artist * Track</string>
+    <string name="publish">Publish</string>
+    <string name="title">Title</string>
+    <string name="review_score">0/5</string>
+    <string name="review_date">04/12/2023</string>
+    <string name="your_review_">Your review...</string>
+</resources>
