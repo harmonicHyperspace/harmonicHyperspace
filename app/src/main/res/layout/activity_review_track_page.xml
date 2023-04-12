@@ -7,39 +7,39 @@
     tools:context=".search.reviewTrackPage">
 
     <TextView
-        android:id="@+id/reviewTrackPageTitle"
+        android:id="@+id/reviewAlbulmPageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/review_track"
-        app:layout_constraintBottom_toTopOf="@+id/trackName"
+        app:layout_constraintBottom_toTopOf="@+id/albulmName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/trackName"
+        android:id="@+id/albulmName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="@string/track_name"
-        app:layout_constraintBottom_toTopOf="@+id/trackInfo"
+        app:layout_constraintBottom_toTopOf="@+id/albulmInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.038"
-        app:layout_constraintStart_toEndOf="@+id/trackImage" />
+        app:layout_constraintStart_toEndOf="@+id/albulmImage" />
 
     <TextView
-        android:id="@+id/trackInfo"
+        android:id="@+id/albulmInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="56dp"
         android:text="@string/artist_track"
         app:layout_constraintBottom_toTopOf="@+id/reviewDate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintHorizontal_bias="0.211"
         app:layout_constraintStart_toEndOf="@+id/reviewScore" />
 
     <ImageView
-        android:id="@+id/trackImage"
+        android:id="@+id/albulmImage"
         android:layout_width="75dp"
         android:layout_height="73dp"
         android:layout_marginStart="16dp"

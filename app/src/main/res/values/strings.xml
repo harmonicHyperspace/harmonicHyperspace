@@ -25,4 +25,7 @@
     <string name="review_score">0/5</string>
     <string name="review_date">04/12/2023</string>
     <string name="your_review_">Your review...</string>
+    <string name="albulm_name">Albulm Name</string>
+    <string name="albulm_artist">Albulm * Artist</string>
+    <string name="review_albulm">Review Albulm</string>
 </resources>
