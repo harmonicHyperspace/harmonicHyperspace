@@ -28,4 +28,7 @@
     <string name="albulm_name">Albulm Name</string>
     <string name="albulm_artist">Albulm * Artist</string>
     <string name="review_albulm">Review Albulm</string>
+    <string name="artist_name">Artist Name</string>
+    <string name="top_albulms">Top Albulms</string>
+    <string name="top_tracks">top tracks</string>
 </resources>
