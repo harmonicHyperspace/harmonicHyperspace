@@ -13,7 +13,7 @@
         android:ems="10"
         android:hint="@string/search"
         android:inputType="textPersonName"
-        android:layout_marginBottom="650dp"
+        android:layout_marginBottom="850dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cancel"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
         android:layout_height="48dp"
         android:layout_marginEnd="16dp"
         android:text="@string/cancel"
-        android:layout_marginBottom="650dp"
+        android:layout_marginBottom="850dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
