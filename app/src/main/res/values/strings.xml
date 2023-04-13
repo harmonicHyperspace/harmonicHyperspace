@@ -36,4 +36,7 @@
     <string name="review">Review</string>
     <string name="top_ratings">top ratings</string>
     <string name="genresLogo">Genres</string>
+    <string name="profileView"># reviews # ratings</string>
+    <string name="editBtn">edit profile</string>
+    <string name="recent_activity">recent activity</string>
 </resources>
