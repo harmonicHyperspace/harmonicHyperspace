@@ -39,4 +39,12 @@
     <string name="profileView"># reviews # ratings</string>
     <string name="editBtn">edit profile</string>
     <string name="recent_activity">recent activity</string>
+    <string name="back"><![CDATA[<]]></string>
+    <string name="save">save</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="information">information</string>
+    <string name="change_picture">change picture</string>
+    <string name="name">name</string>
+    <string name="biography">biography</string>
+    <string name="favorite_albums">favorite albums</string>
 </resources>
