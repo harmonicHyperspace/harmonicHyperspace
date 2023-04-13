@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.harmonichyperspace.R;
 
-public class albulms extends AppCompatActivity {
+public class albums extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
