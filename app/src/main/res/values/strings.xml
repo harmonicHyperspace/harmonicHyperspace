@@ -35,4 +35,5 @@
     <string name="reviewInfo">total # of ratings * overall score</string>
     <string name="review">Review</string>
     <string name="top_ratings">top ratings</string>
+    <string name="genresLogo">Genres</string>
 </resources>
