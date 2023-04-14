@@ -15,8 +15,8 @@ import java.util.List;
 @Dao
 public interface harmonicHyperspaceDAO {
 
-    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.USER_TABLE + " WHERE mUserId = :userId ORDER BY mUserId DESC")
-    List<harmonicHyperspace> getHyperspaceByUserId(int userId);
+//    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.USER_TABLE + " WHERE mUserId = :userId ORDER BY mUserId DESC")
+//    List<harmonicHyperspace> getHyperspaceByUserId(int userId);
 
     @Insert
     void insert(User... users);

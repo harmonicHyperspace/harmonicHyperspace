@@ -10,6 +10,7 @@ import androidx.room.Room;
 
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
+import com.example.harmonichyperspace.landing.landing;
 import com.example.harmonichyperspace.landing.logIn;
 import com.example.harmonichyperspace.profile.User;
 
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             mharmonicHyperspaceDAO.insert(defaultUser);
         }
 
-        Intent intent = logIn.intentFactory(this);
+        Intent intent = landing.intentFactory(this);
         startActivity(intent);
     }
 }
