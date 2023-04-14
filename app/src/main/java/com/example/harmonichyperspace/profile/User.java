@@ -23,6 +23,12 @@ public class User {
         mPassword = password;
     }
 
+    public User(String username, String password, String email){
+        mUsername = username;
+        mPassword = password;
+        mEmail = email;
+    }
+
     public int getUserId() {
         return mUserId;
     }
