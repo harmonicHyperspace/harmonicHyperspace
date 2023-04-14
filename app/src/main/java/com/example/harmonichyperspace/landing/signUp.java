@@ -12,6 +12,7 @@ import android.widget.EditText;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
 import com.example.harmonichyperspace.MainActivity;
 import com.example.harmonichyperspace.R;
+import com.example.harmonichyperspace.discovery.genres;
 import com.example.harmonichyperspace.profile.User;
 
 public class signUp extends AppCompatActivity {
@@ -71,12 +72,12 @@ public class signUp extends AppCompatActivity {
         password = mPasswordField.getText().toString().trim();
         email = mEmailField.getText().toString().trim();
 
-        User newUser = new User(username, password, email);
+        User newUser = new User(username, password);
         mHyperspaceDAO.insert(newUser);
     }
 
     private void startApp() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), genres.class);
         startActivity(intent);
     }
 }
