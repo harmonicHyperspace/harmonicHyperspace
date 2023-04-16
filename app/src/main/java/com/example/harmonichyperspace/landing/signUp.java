@@ -29,7 +29,7 @@ public class signUp extends AppCompatActivity {
     private String email;
 
 
-    private harmonicHyperspaceDAO mHyperspaceDAO;
+    private harmonicHyperspaceDAO mHarmonicHyperspaceDAO;
 
     public static Intent intentFactory(Context context){
         Intent intent = new Intent(context, signUp.class);
@@ -73,7 +73,7 @@ public class signUp extends AppCompatActivity {
         email = mEmailField.getText().toString().trim();
 
         User newUser = new User(username, password);
-        mHyperspaceDAO.insert(newUser);
+        mHarmonicHyperspaceDAO.insert(newUser);
     }
 
     private void startApp() {
