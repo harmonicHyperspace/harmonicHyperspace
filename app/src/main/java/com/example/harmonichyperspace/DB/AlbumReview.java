@@ -14,7 +14,6 @@ public class AlbumReview {
     private String mTitle;
     private String mReview;
     private String mRating;
-
     private String mArtist;
     private String mAlbum;
     private String mCategory;
