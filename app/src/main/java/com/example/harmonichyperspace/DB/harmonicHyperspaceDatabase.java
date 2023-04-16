@@ -2,11 +2,20 @@ package com.example.harmonichyperspace.DB;
 
 import android.content.Context;
 
+import androidx.room.AutoMigration;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {User.class, SongReview.class, AlbumReview.class}, version = 3)
+@Database(
+        version = 3,
+        entities = {User.class, SongReview.class, AlbumReview.class},
+        exportSchema = true,
+        autoMigrations = {
+                @AutoMigration(from = 1, to = 2),
+                @AutoMigration(from = 2, to = 3)
+        }
+)
 public abstract class harmonicHyperspaceDatabase extends RoomDatabase {
     public static final String DATABASE_NAME = "harmonicHyperspace.db";
     public static final String HARMONIC_TABLE = "harmonic_table";
