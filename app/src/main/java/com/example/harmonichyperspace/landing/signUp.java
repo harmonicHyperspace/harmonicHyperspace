@@ -10,10 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
-import com.example.harmonichyperspace.MainActivity;
 import com.example.harmonichyperspace.R;
 import com.example.harmonichyperspace.discovery.genres;
-import com.example.harmonichyperspace.profile.User;
+import com.example.harmonichyperspace.DB.User;
 
 public class signUp extends AppCompatActivity {
 

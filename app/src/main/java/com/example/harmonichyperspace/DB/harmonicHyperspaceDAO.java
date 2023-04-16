@@ -7,9 +7,6 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.harmonichyperspace.harmonicHyperspace;
-import com.example.harmonichyperspace.profile.User;
-
 import java.util.List;
 
 @Dao
@@ -44,5 +41,44 @@ public interface harmonicHyperspaceDAO {
 
     @Query("SELECT * FROM " + harmonicHyperspaceDatabase.USER_TABLE + " WHERE mBio = :bio")
     User getUserByBio(String bio);
+
+    @Insert
+    void insert(SongReview... reviews);
+
+    @Update
+    void update(SongReview... reviews);
+
+    @Delete
+    void delete(SongReview... reviews);
+
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE)
+    List<SongReview> getAllReviews();
+
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mReviewId = :reviewId")
+    SongReview getReviewByReviewId(int reviewId);
+
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mUserId = :userId")
+    SongReview getReviewByUserId(int userId);
+
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mTitle = :title")
+    SongReview getReviewByTitle(String title);
+
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mReview = :review")
+    SongReview getReviewByReview(String review);
+
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mRating = :rating")
+    SongReview getReviewByRating(int rating);
+
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mSong = :song")
+    SongReview getReviewBySongId(int song);
+
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mArtist = :artist")
+    SongReview getReviewByArtistId(int artist);
+
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mAlbum = :album")
+    SongReview getReviewByAlbumId(int album);
+
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mCategory = :category")
+    SongReview getReviewByCategoryId(int category);
 
 }
