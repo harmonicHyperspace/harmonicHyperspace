@@ -51,35 +51,35 @@ public interface harmonicHyperspaceDAO {
     @Delete
     void delete(SongReview... reviews);
 
-    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE)
-    List<SongReview> getAllReviews();
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.TRACK_REVIEW_TABLE)
+    List<SongReview> getAllSongReviews();
 
-    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mReviewId = :reviewId")
-    SongReview getReviewByReviewId(int reviewId);
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.TRACK_REVIEW_TABLE + " WHERE mReviewId = :reviewId")
+    SongReview getSongReviewByReviewId(int reviewId);
 
-    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mUserId = :userId")
-    SongReview getReviewByUserId(int userId);
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.TRACK_REVIEW_TABLE + " WHERE mUserId = :userId")
+    SongReview getSongReviewByUserId(int userId);
 
-    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mTitle = :title")
-    SongReview getReviewByTitle(String title);
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.TRACK_REVIEW_TABLE + " WHERE mTitle = :title")
+    SongReview getSongReviewByTitle(String title);
 
-    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mReview = :review")
-    SongReview getReviewByReview(String review);
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.TRACK_REVIEW_TABLE + " WHERE mReview = :review")
+    SongReview getSongReviewByReview(String review);
 
-    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mRating = :rating")
-    SongReview getReviewByRating(int rating);
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.TRACK_REVIEW_TABLE + " WHERE mRating = :rating")
+    SongReview getSongReviewByRating(int rating);
 
-    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mSong = :song")
-    SongReview getReviewBySongId(int song);
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.TRACK_REVIEW_TABLE + " WHERE mSong = :song")
+    SongReview getSongReviewBySong(String song);
 
-    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mArtist = :artist")
-    SongReview getReviewByArtistId(int artist);
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.TRACK_REVIEW_TABLE + " WHERE mArtist = :artist")
+    SongReview getSongReviewByArtist(String artist);
 
-    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mAlbum = :album")
-    SongReview getReviewByAlbumId(int album);
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.TRACK_REVIEW_TABLE + " WHERE mAlbum = :album")
+    SongReview getSongReviewByAlbum(String album);
 
-    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.SONG_REVIEW_TABLE + " WHERE mCategory = :category")
-    SongReview getReviewByCategoryId(int category);
+    @Query("SELECT * FROM " + harmonicHyperspaceDatabase.TRACK_REVIEW_TABLE + " WHERE mCategory = :category")
+    SongReview getSongReviewByCategoryId(int category);
 
     @Insert
     void insert(AlbumReview... reviews);

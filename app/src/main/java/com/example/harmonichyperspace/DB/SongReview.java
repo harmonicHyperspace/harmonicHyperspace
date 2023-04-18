@@ -3,7 +3,7 @@ package com.example.harmonichyperspace.DB;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = harmonicHyperspaceDatabase.SONG_REVIEW_TABLE)
+@Entity(tableName = harmonicHyperspaceDatabase.TRACK_REVIEW_TABLE)
 public class SongReview {
     @PrimaryKey(autoGenerate = true)
     private int mReviewId;
