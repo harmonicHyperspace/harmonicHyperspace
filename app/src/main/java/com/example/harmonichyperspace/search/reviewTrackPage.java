@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.harmonichyperspace.DB.SongReview;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
-import com.example.harmonichyperspace.MainActivity;
+import com.example.harmonichyperspace.landing.MainActivity;
 import com.example.harmonichyperspace.R;
 import com.example.harmonichyperspace.discovery.genres;
 

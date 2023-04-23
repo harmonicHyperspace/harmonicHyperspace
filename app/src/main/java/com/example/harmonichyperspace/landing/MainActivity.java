@@ -1,6 +1,5 @@
 package com.example.harmonichyperspace.landing;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,23 +8,23 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.harmonichyperspace.R;
+import com.example.harmonichyperspace.landing.logIn;
+import com.example.harmonichyperspace.landing.signUp;
 
-public class landing extends AppCompatActivity {
+;
+
+public class MainActivity extends AppCompatActivity {
 
     private Button mSignUp;
     private Button mLogIn;
 
-    public static Intent intentFactory(Context context) {
-        Intent intent = new Intent(context, landing.class);
-        return intent;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_landing);
+        setContentView(R.layout.activity_main);
 
         wireupDisplay();
+
     }
 
     private void wireupDisplay() {
@@ -57,5 +56,4 @@ public class landing extends AppCompatActivity {
         startActivity(intent);
 
     }
-
 }
