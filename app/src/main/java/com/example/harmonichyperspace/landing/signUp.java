@@ -76,7 +76,7 @@ public class signUp extends AppCompatActivity {
     }
 
     private void startApp() {
-        Intent intent = new Intent(getApplicationContext(), genres.class);
+        Intent intent = genres.intentFactory(getApplicationContext());
         startActivity(intent);
     }
 }
