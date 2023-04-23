@@ -1,6 +1,7 @@
 package com.example.harmonichyperspace.landing;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
+import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
 import com.example.harmonichyperspace.R;
 import com.example.harmonichyperspace.discovery.genres;
 import com.example.harmonichyperspace.DB.User;
@@ -26,6 +28,8 @@ public class signUp extends AppCompatActivity {
     private String username;
     private String password;
     private String email;
+    harmonicHyperspaceDAO mDao;
+
 
 
     private harmonicHyperspaceDAO mHarmonicHyperspaceDAO;
@@ -41,6 +45,10 @@ public class signUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         wiringUpDisplay();
+        mDao = Room.databaseBuilder(this, harmonicHyperspaceDatabase.class, harmonicHyperspaceDatabase.DATABASE_NAME)
+                .allowMainThreadQueries()
+                .build()
+                .harmonicHyperspaceDAO();
     }
 
     private void wiringUpDisplay() {

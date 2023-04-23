@@ -6,7 +6,10 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
+import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
+import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
 import com.example.harmonichyperspace.R;
 import com.example.harmonichyperspace.landing.logIn;
 import com.example.harmonichyperspace.landing.signUp;
@@ -18,12 +21,18 @@ public class MainActivity extends AppCompatActivity {
     private Button mSignUp;
     private Button mLogIn;
 
+    harmonicHyperspaceDAO mDao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         wireupDisplay();
+         mDao = Room.databaseBuilder(this, harmonicHyperspaceDatabase.class, harmonicHyperspaceDatabase.DATABASE_NAME)
+                .allowMainThreadQueries()
+                .build()
+                .harmonicHyperspaceDAO();
 
     }
 
