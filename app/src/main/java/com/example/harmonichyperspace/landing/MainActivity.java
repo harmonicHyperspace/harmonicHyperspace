@@ -11,17 +11,14 @@ import androidx.room.Room;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
 import com.example.harmonichyperspace.R;
-import com.example.harmonichyperspace.landing.logIn;
-import com.example.harmonichyperspace.landing.signUp;
 
 ;
 
 public class MainActivity extends AppCompatActivity {
 
+    harmonicHyperspaceDAO mDao;
     private Button mSignUp;
     private Button mLogIn;
-
-    harmonicHyperspaceDAO mDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         wireupDisplay();
-         mDao = Room.databaseBuilder(this, harmonicHyperspaceDatabase.class, harmonicHyperspaceDatabase.DATABASE_NAME)
+        mDao = Room.databaseBuilder(this, harmonicHyperspaceDatabase.class, harmonicHyperspaceDatabase.DATABASE_NAME)
                 .allowMainThreadQueries()
                 .build()
                 .harmonicHyperspaceDAO();

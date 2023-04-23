@@ -1,11 +1,15 @@
 package com.example.harmonichyperspace.landing;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,9 +33,6 @@ public class signUp extends AppCompatActivity {
     private String password;
     private String email;
     harmonicHyperspaceDAO mDao;
-
-
-
     private harmonicHyperspaceDAO mHarmonicHyperspaceDAO;
 
     public static Intent intentFactory(Context context){
@@ -43,6 +44,9 @@ public class signUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        harmonicHyperspaceDatabase db = harmonicHyperspaceDatabase.getInstance(this);
+        mHarmonicHyperspaceDAO = db.harmonicHyperspaceDAO();
 
         wiringUpDisplay();
         mDao = Room.databaseBuilder(this, harmonicHyperspaceDatabase.class, harmonicHyperspaceDatabase.DATABASE_NAME)
@@ -80,7 +84,13 @@ public class signUp extends AppCompatActivity {
         email = mEmailField.getText().toString().trim();
 
         User newUser = new User(username, password);
-        mHarmonicHyperspaceDAO.insert(newUser);
+
+        if(mHarmonicHyperspaceDAO != null) {
+            mHarmonicHyperspaceDAO.insert(newUser);
+        }
+        else{
+            Log.e(TAG, "DAO object is null" );
+        }
     }
 
     private void startApp() {
