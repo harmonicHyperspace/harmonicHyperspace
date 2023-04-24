@@ -75,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         clearUserFromPref();
                     }
-                    clearUserFromPref();
-                    clearUserFromIntent();
         });
         alertBuilder.setNegativeButton(("no"),
                 new DialogInterface.OnClickListener() {
