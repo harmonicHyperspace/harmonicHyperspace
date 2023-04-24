@@ -1,5 +1,6 @@
 package com.example.harmonichyperspace.DB;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -17,12 +18,15 @@ public class User {
     private String mName;
     private String mEmail;
     private String mBio;
+
+    @ColumnInfo(name = "is_admin")
     private boolean isAdmin;
 
 
-    public User(String username, String password) {
+    public User(String username, String password, boolean isAdmin) {
         mUsername = username;
         mPassword = password;
+        this.isAdmin = isAdmin;
     }
 
 //    public User(String username, String password, String email){

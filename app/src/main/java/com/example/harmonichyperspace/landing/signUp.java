@@ -81,7 +81,7 @@ public class signUp extends AppCompatActivity {
         password = mPasswordField.getText().toString().trim();
         email = mEmailField.getText().toString().trim();
 
-        User newUser = new User(username, password);
+        User newUser = new User(username, password, false);
 
         if(mHarmonicHyperspaceDAO != null) {
             mHarmonicHyperspaceDAO.insert(newUser);

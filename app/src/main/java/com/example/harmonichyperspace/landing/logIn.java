@@ -11,8 +11,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import com.example.harmonichyperspace.DB.DatabaseCallback;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
+import com.example.harmonichyperspace.Landing;
 import com.example.harmonichyperspace.MainHomePage;
 import com.example.harmonichyperspace.R;
 import com.example.harmonichyperspace.DB.User;
@@ -59,7 +61,7 @@ public class logIn extends AppCompatActivity {
                     if(!validatePassword()){
                         Toast.makeText(getApplicationContext(), "Incorrect password", Toast.LENGTH_SHORT).show();
                     }else{
-                        Intent intent = MainHomePage.intentFactory(getApplicationContext(), mUser.getUserId());
+                        Intent intent = Landing.intentFactory(getApplicationContext(), mUser.getUserId());
                         startActivity(intent);
                     }
                 };
@@ -88,6 +90,7 @@ public class logIn extends AppCompatActivity {
     private void getDatabase() {
         mHarmonicHyperspaceDAO = Room.databaseBuilder(this, harmonicHyperspaceDatabase.class, "harmonicHyperspace.db")
                 .allowMainThreadQueries()
+                .addCallback(new DatabaseCallback(this))
                 .build()
                 .harmonicHyperspaceDAO();
 
