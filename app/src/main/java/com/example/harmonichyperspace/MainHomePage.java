@@ -65,7 +65,7 @@ public class MainHomePage extends AppCompatActivity {
         //do we have a user at all?
         List<User> users = mharmonicHyperspaceDAO.getAllUsers();
         if (users.size() <= 0) {
-            User defaultUser = new User("default", "default");
+            User defaultUser = new User("admin", "admin");
             mharmonicHyperspaceDAO.insert(defaultUser);
         }
 

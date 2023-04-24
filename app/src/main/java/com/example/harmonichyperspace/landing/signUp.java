@@ -17,22 +17,19 @@ import android.widget.EditText;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
 import com.example.harmonichyperspace.R;
+import com.example.harmonichyperspace.databinding.ActivityMainBinding;
 import com.example.harmonichyperspace.discovery.genres;
 import com.example.harmonichyperspace.DB.User;
 
 public class signUp extends AppCompatActivity {
-
     private EditText mUsernameField;
     private EditText mPasswordField;
     private EditText mEmailField;
-
     private Button mGoogleButton;
     private Button mSignUpButton;
-
     private String username;
     private String password;
     private String email;
-    harmonicHyperspaceDAO mDao;
     private harmonicHyperspaceDAO mHarmonicHyperspaceDAO;
 
     public static Intent intentFactory(Context context){
@@ -49,7 +46,7 @@ public class signUp extends AppCompatActivity {
         mHarmonicHyperspaceDAO = db.harmonicHyperspaceDAO();
 
         wiringUpDisplay();
-        mDao = Room.databaseBuilder(this, harmonicHyperspaceDatabase.class, harmonicHyperspaceDatabase.DATABASE_NAME)
+        mHarmonicHyperspaceDAO = Room.databaseBuilder(this, harmonicHyperspaceDatabase.class, harmonicHyperspaceDatabase.DATABASE_NAME)
                 .allowMainThreadQueries()
                 .build()
                 .harmonicHyperspaceDAO();
