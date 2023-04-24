@@ -9,7 +9,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [2023] [Ivan Reyes]
+    Copyright [2023] [Ivan Reyes & Gerardo Solis]
 
     Licensed under the GNU General Public License, version 3.0 (the "License");
     you may not use this file except in compliance with the License.
