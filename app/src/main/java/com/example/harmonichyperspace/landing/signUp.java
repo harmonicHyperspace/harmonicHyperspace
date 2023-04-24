@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
@@ -31,6 +32,8 @@ public class signUp extends AppCompatActivity {
     private String username;
     private String password;
     private String email;
+    private User mUser;
+
     private harmonicHyperspaceDAO mHarmonicHyperspaceDAO;
 
     public static Intent intentFactory(Context context){
@@ -65,7 +68,10 @@ public class signUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getValuesFromDisplay();
-                startApp();
+                if (checkForUserInDatabase()){
+                    createUser();
+                    startApp();
+                }
             }
         });
 //        mGoogleButton.setOnClickListener(new View.OnClickListener() {
@@ -76,10 +82,22 @@ public class signUp extends AppCompatActivity {
 //        });
     }
 
+    private boolean checkForUserInDatabase() {
+        mUser = mHarmonicHyperspaceDAO.getUserByUsername(username);
+        if(mUser != null) {
+            Toast.makeText(this, "Username " + username + " found choose new user name", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
     private void getValuesFromDisplay() {
         username = mUsernameField.getText().toString().trim();
         password = mPasswordField.getText().toString().trim();
         email = mEmailField.getText().toString().trim();
+
+    }
+    private void createUser(){
 
         User newUser = new User(username, password, false);
 
