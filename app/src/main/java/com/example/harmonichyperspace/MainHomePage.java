@@ -1,24 +1,21 @@
 package com.example.harmonichyperspace;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
+import com.example.harmonichyperspace.DB.User;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
-import com.example.harmonichyperspace.landing.landing;
-import com.example.harmonichyperspace.landing.logIn;
-import com.example.harmonichyperspace.profile.User;
+import com.example.harmonichyperspace.search.search;
 
 import java.util.List;
 
-;
-
-public class MainActivity extends AppCompatActivity {
+public class MainHomePage extends AppCompatActivity {
 
     private static final String USER_ID_KEY = "com.example.harmonichyperspace.useridKey";
     private static final String PREFRENCE_KEY = "com.example.harmonichyperspace.preferenceKey";
@@ -27,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private harmonicHyperspaceDAO mharmonicHyperspaceDAO;
 
     public static Intent intentFactory(Context context, int userId) {
-        Intent intent = new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, MainHomePage.class);
         intent.putExtra(USER_ID_KEY, userId);
         return intent;
     }
@@ -35,12 +32,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_home_page);
 
         getDatabase();
 
         checkForUser();
-
     }
 
     private void getDatabase() {
@@ -69,11 +65,9 @@ public class MainActivity extends AppCompatActivity {
         //do we have a user at all?
         List<User> users = mharmonicHyperspaceDAO.getAllUsers();
         if (users.size() <= 0) {
-            User defaultUser = new User("default", "default");
+            User defaultUser = new User("admin", "admin");
             mharmonicHyperspaceDAO.insert(defaultUser);
         }
 
-        Intent intent = landing.intentFactory(this);
-        startActivity(intent);
     }
 }

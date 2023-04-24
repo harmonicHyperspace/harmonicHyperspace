@@ -13,9 +13,9 @@ import androidx.room.Room;
 
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
-import com.example.harmonichyperspace.MainActivity;
+import com.example.harmonichyperspace.MainHomePage;
 import com.example.harmonichyperspace.R;
-import com.example.harmonichyperspace.profile.User;
+import com.example.harmonichyperspace.DB.User;
 
 public class logIn extends AppCompatActivity {
 
@@ -59,7 +59,7 @@ public class logIn extends AppCompatActivity {
                     if(!validatePassword()){
                         Toast.makeText(getApplicationContext(), "Incorrect password", Toast.LENGTH_SHORT).show();
                     }else{
-                        Intent intent = MainActivity.intentFactory(getApplicationContext(), mUser.getUserId());
+                        Intent intent = MainHomePage.intentFactory(getApplicationContext(), mUser.getUserId());
                         startActivity(intent);
                     }
                 };

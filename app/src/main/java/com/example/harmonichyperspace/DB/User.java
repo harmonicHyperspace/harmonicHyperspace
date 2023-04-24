@@ -1,4 +1,4 @@
-package com.example.harmonichyperspace.profile;
+package com.example.harmonichyperspace.DB;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
