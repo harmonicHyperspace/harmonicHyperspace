@@ -44,8 +44,8 @@ public class Landing extends AppCompatActivity {
         mUser = mHarmonicHyperspaceDAO.getUserByUserId(userId);
 
         mUsernameTextView = findViewById(R.id.usernameName);
-        mAdminAreaButton = findViewById(R.id.buttonAdminButton);
-        mLogoutButton = findViewById(R.id.logoutButtonButton);
+        mAdminAreaButton = findViewById(R.id.adminButtonButton);
+        mLogoutButton = findViewById(R.id.logOUT);
 
         mUsernameTextView.setText("Welcome, " + mUser.getUsername());
 
