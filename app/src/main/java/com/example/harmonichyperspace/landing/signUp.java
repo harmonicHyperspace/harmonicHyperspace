@@ -92,7 +92,7 @@ public class signUp extends AppCompatActivity {
     }
 
     private void startApp() {
-        Intent intent = genres.intentFactory(getApplicationContext());
+        Intent intent = success.intentFactory(getApplicationContext());
         startActivity(intent);
     }
 }
