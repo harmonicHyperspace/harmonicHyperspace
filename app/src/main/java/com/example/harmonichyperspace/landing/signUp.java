@@ -16,6 +16,7 @@ import android.widget.EditText;
 
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
+import com.example.harmonichyperspace.MainHomePage;
 import com.example.harmonichyperspace.R;
 import com.example.harmonichyperspace.databinding.ActivityMainBinding;
 import com.example.harmonichyperspace.discovery.genres;
