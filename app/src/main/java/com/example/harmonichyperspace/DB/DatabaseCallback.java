@@ -26,10 +26,10 @@ public class DatabaseCallback  extends RoomDatabase.Callback{
                         .build()
                         .harmonicHyperspaceDAO();
 
-                User admin = new User("admin", "password123", true);
+                User admin = new User("admin2", "admin2", true);
                 dao.insert(admin);
 
-                User user = new User("user", "password123", false);
+                User user = new User("testuser1", "testuser1", false);
                 dao.insert(user);
             }
         }).start();
