@@ -17,6 +17,8 @@ public class User {
     private String mName;
     private String mEmail;
     private String mBio;
+    private boolean isAdmin;
+
 
     public User(String username, String password) {
         mUsername = username;
@@ -75,5 +77,13 @@ public class User {
 
     public void setBio(String bio) {
         mBio = bio;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }
