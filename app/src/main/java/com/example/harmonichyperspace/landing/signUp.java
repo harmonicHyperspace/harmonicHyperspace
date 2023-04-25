@@ -33,6 +33,7 @@ public class signUp extends AppCompatActivity {
     private String password;
     private String email;
     private User mUser;
+    private User mEmail;
 
     private harmonicHyperspaceDAO mHarmonicHyperspaceDAO;
 
@@ -69,8 +70,10 @@ public class signUp extends AppCompatActivity {
             public void onClick(View v) {
                 getValuesFromDisplay();
                 if (checkForUserInDatabase()){
-                    createUser();
-                    startApp();
+                    if(emailInDataBase()){
+                        createUser();
+                        startApp();
+                    }
                 }
             }
         });
@@ -80,6 +83,15 @@ public class signUp extends AppCompatActivity {
 //
 //            }
 //        });
+    }
+
+    private boolean emailInDataBase(){
+        mEmail = mHarmonicHyperspaceDAO.getUserByEmail(email);
+        if(mEmail != null) {
+            Toast.makeText(this, "Email " + email + " has been used before, choose new email", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     private boolean checkForUserInDatabase() {
@@ -99,7 +111,7 @@ public class signUp extends AppCompatActivity {
     }
     private void createUser(){
 
-        User newUser = new User(username, password, false);
+        User newUser = new User(username, password, email, false);
 
         if(mHarmonicHyperspaceDAO != null) {
             mHarmonicHyperspaceDAO.insert(newUser);

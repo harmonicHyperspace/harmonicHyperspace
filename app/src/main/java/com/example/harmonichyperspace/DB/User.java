@@ -23,9 +23,10 @@ public class User {
     private boolean isAdmin;
 
 
-    public User(String username, String password, boolean isAdmin) {
+    public User(String username, String password, String email,boolean isAdmin) {
         mUsername = username;
         mPassword = password;
+        mEmail = email;
         this.isAdmin = isAdmin;
     }
 
