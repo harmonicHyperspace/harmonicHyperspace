@@ -1,17 +1,20 @@
 package com.example.harmonichyperspace.search;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.SearchView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.harmonichyperspace.MainHomePage;
 import com.example.harmonichyperspace.R;
+import com.example.harmonichyperspace.discovery.genres;
+import com.example.harmonichyperspace.profile.profile;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class search extends AppCompatActivity {
-
+    BottomNavigationView bottomNavigationView;
     private SearchView mSearchButton;
 
     public static Intent intenFactory(Context context) {
@@ -23,7 +26,7 @@ public class search extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
+        setNavBar();
         wireupDisplay();
     }
 
@@ -55,5 +58,31 @@ public class search extends AppCompatActivity {
         Intent intent = new Intent(search.this, searchResults.class);
         intent.putExtra("search", query);
         startActivity(intent);
+    }
+
+    private void setNavBar() {
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.nav_home);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nav_home:
+                    startActivity(new Intent(getApplicationContext(), MainHomePage.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                case R.id.nav_discovery:
+                    startActivity(new Intent(getApplicationContext(), genres.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                case R.id.nav_search:
+                    return true;
+                case R.id.nav_profile:
+                    startActivity(new Intent(getApplicationContext(), profile.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+            }
+            return false;
+        });
+
     }
 }

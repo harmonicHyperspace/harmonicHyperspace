@@ -59,4 +59,7 @@ dependencies {
 
     //addding the spotifyAPI
 
+    //adding the material ui thing
+    implementation 'com.google.android.material:material:1.8.0'
+
 }

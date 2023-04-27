@@ -122,7 +122,7 @@ public class signUp extends AppCompatActivity {
     }
 
     private void startApp() {
-        Intent intent = success.intentFactory(getApplicationContext());
+        Intent intent = MainHomePage.intentFactory(getApplicationContext(), mUser.getUserId());
         startActivity(intent);
     }
 }

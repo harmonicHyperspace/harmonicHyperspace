@@ -1,17 +1,20 @@
 package com.example.harmonichyperspace;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
 import com.example.harmonichyperspace.DB.User;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
+import com.example.harmonichyperspace.discovery.genres;
+import com.example.harmonichyperspace.profile.profile;
 import com.example.harmonichyperspace.search.search;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
@@ -19,8 +22,8 @@ public class MainHomePage extends AppCompatActivity {
 
     private static final String USER_ID_KEY = "com.example.harmonichyperspace.useridKey";
     private static final String PREFRENCE_KEY = "com.example.harmonichyperspace.preferenceKey";
+    BottomNavigationView bottomNavigationView;
     private int mUserId = -1;
-
     private harmonicHyperspaceDAO mharmonicHyperspaceDAO;
 
     public static Intent intentFactory(Context context, int userId) {
@@ -34,9 +37,36 @@ public class MainHomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_home_page);
 
+        setNavBar();
+
         getDatabase();
 
         checkForUser();
+    }
+
+    private void setNavBar() {
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.nav_home);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nav_home:
+                    return true;
+                case R.id.nav_discovery:
+                    startActivity(new Intent(getApplicationContext(), genres.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                case R.id.nav_search:
+                    startActivity(new Intent(getApplicationContext(), search.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                case R.id.nav_profile:
+                    startActivity(new Intent(getApplicationContext(), profile.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+            }
+            return false;
+        });
     }
 
     private void getDatabase() {
@@ -65,7 +95,7 @@ public class MainHomePage extends AppCompatActivity {
         //do we have a user at all?
         List<User> users = mharmonicHyperspaceDAO.getAllUsers();
         if (users.size() <= 0) {
-            User defaultUser = new User("admin", "admin", "admin" ,true);
+            User defaultUser = new User("admin", "admin", "admin", true);
             mharmonicHyperspaceDAO.insert(defaultUser);
         }
 
