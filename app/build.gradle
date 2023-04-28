@@ -57,9 +57,21 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
-    //addding the spotifyAPI
-
     //adding the material ui thing
     implementation 'com.google.android.material:material:1.8.0'
+
+    //adding retrofit into teh project
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    //add gson to the project
+    implementation 'com.google.code.gson:gson:2.9.0'
+
+    //adding okhhtp3 to the project
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+
+    //ading glide
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
 
 }
