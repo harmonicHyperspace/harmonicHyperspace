@@ -15,17 +15,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.harmonichyperspace.POJO.Album;
 import com.example.harmonichyperspace.R;
-//import com.example.harmonichyperspace.search.morealbumsActivity;
+import com.example.harmonichyperspace.search.albulmInformation;
 import com.example.harmonichyperspace.search.moretracksActivity;
 
 import java.util.List;
 
 public class AlbumsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private Context context;
-    private List<Album> albums;
     private static final int ITEM_VIEW_TYPE_ALBUM = 0;
     private static final int ITEM_VIEW_TYPE_SHOW_MORE = 1;
-    private static final int MAX_ITEMS = 5;
+    private static final int MAX_ITEMS = 3;
+    private Context context;
+    private List<Album> albums;
 
     public AlbumsAdapter(Context context, List<Album> albums) {
         this.context = context;
@@ -86,7 +86,16 @@ public class AlbumsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
-    public static class AlbumViewHolder extends RecyclerView.ViewHolder {
+    public static class ShowMoreViewHolder extends RecyclerView.ViewHolder {
+        Button showMoreButton;
+
+        public ShowMoreViewHolder(@NonNull View itemView) {
+            super(itemView);
+            showMoreButton = itemView.findViewById(R.id.btn_show_more);
+        }
+    }
+
+    public class AlbumViewHolder extends RecyclerView.ViewHolder {
         private TextView albumName;
         private ImageView albumImage;
 
@@ -94,15 +103,15 @@ public class AlbumsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             super(itemView);
             albumName = itemView.findViewById(R.id.album_name);
             albumImage = itemView.findViewById(R.id.album_image);
-        }
-    }
 
-    public static class ShowMoreViewHolder extends RecyclerView.ViewHolder {
-        Button showMoreButton;
-
-        public ShowMoreViewHolder(@NonNull View itemView) {
-            super(itemView);
-            showMoreButton = itemView.findViewById(R.id.btn_show_more);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Start the activity that displays the album
+                    Intent intent = new Intent(context, albulmInformation.class);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

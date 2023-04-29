@@ -17,16 +17,13 @@ import com.example.harmonichyperspace.R;
 import com.example.harmonichyperspace.discovery.genres;
 
 public class reviewAlbulmPage extends AppCompatActivity {
-
     private EditText mTitleField;
     private EditText mReviewField;
     private EditText mRatingField;
     private String mCategoryField;
     private String mArtistField;
     private String mAlbulmField;
-
     private Button mSubmitButton;
-
     private harmonicHyperspaceDAO mHarmonicHyperspaceDAO;
 
     public static Intent intentFactory(Context context) {
@@ -70,7 +67,7 @@ public class reviewAlbulmPage extends AppCompatActivity {
     private void submitReview() {
         String title = mTitleField.getText().toString();
         String review = mReviewField.getText().toString();
-        String rating = mRatingField.getText().toString();
+        int rating = mRatingField.getInputType();
         String category = mCategoryField;
         String artist = mArtistField;
         String albulm = mAlbulmField;

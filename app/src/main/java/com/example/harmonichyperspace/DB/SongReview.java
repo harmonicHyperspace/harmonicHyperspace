@@ -7,20 +7,18 @@ import androidx.room.PrimaryKey;
 public class SongReview {
     @PrimaryKey(autoGenerate = true)
     private int mReviewId;
-
     private int mUserId;
-
     private String mTitle;
     private String mReview;
     private String mRating;
-
     private String mSong;
     private String mArtist;
     private String mAlbum;
     private String mCategory;
+    private String mThumbnail;
 //    private Date mDate;
 
-    public SongReview(String title, String review, String rating, String song, String artist, String album, String category) {
+    public SongReview(String title, String review, String rating, String song, String artist, String album, String category, String thumbnail) {
         mTitle = title;
         mReview = review;
         mRating = rating;
@@ -28,6 +26,7 @@ public class SongReview {
         mArtist = artist;
         mAlbum = album;
         mCategory = category;
+        mThumbnail = thumbnail;
     }
 
     public int getReviewId() {
@@ -102,6 +101,13 @@ public class SongReview {
         mCategory = category;
     }
 
+    public String getThumbnail() {
+        return mThumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        mThumbnail = thumbnail;
+    }
     //    public Date getDate() {
 //        return mDate;
 //    }

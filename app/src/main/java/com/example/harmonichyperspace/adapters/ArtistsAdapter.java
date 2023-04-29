@@ -15,21 +15,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.harmonichyperspace.POJO.Artist;
 import com.example.harmonichyperspace.R;
+import com.example.harmonichyperspace.search.artist_information;
 import com.example.harmonichyperspace.search.moretracksActivity;
 
 import java.util.List;
 
 public class ArtistsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private Context context;
-    private List<Artist> artists;
     private static final int ITEM_VIEW_TYPE_ARTIST = 0;
     private static final int ITEM_VIEW_TYPE_SHOW_MORE = 1;
     private static final int MAX_ITEMS = 2;
+    private Context context;
+    private List<Artist> artists;
 
     public ArtistsAdapter(Context context, List<Artist> artists) {
         this.context = context;
         this.artists = artists;
     }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -84,7 +86,16 @@ public class ArtistsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
-    public static class ArtistViewHolder extends RecyclerView.ViewHolder {
+    public static class ShowMoreViewHolder extends RecyclerView.ViewHolder {
+        Button showMoreButton;
+
+        public ShowMoreViewHolder(@NonNull View itemView) {
+            super(itemView);
+            showMoreButton = itemView.findViewById(R.id.btn_show_more);
+        }
+    }
+
+    public class ArtistViewHolder extends RecyclerView.ViewHolder {
         private TextView artistName;
         private ImageView artistImage;
 
@@ -92,15 +103,15 @@ public class ArtistsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             super(itemView);
             artistName = itemView.findViewById(R.id.artist_name);
             artistImage = itemView.findViewById(R.id.artist_image);
-        }
-    }
 
-    public static class ShowMoreViewHolder extends RecyclerView.ViewHolder {
-        Button showMoreButton;
-
-        public ShowMoreViewHolder(@NonNull View itemView) {
-            super(itemView);
-            showMoreButton = itemView.findViewById(R.id.btn_show_more);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Start the activity that displays more tracks
+                    Intent intent = new Intent(context, artist_information.class);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

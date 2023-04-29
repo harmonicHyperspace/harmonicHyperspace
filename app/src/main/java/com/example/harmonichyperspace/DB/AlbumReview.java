@@ -5,21 +5,19 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = harmonicHyperspaceDatabase.ALBUM_REVIEW_TABLE)
 public class AlbumReview {
-
     @PrimaryKey(autoGenerate = true)
     private int mReviewId;
-
     private int mUserId;
-
     private String mTitle;
     private String mReview;
-    private String mRating;
+    private int mRating;
     private String mArtist;
     private String mAlbum;
     private String mCategory;
+    private String mThumbnail;
 //    private Date mDate;
 
-    public AlbumReview(String title, String review, String rating, String artist, String album, String category) {
+    public AlbumReview(String title, String review, int rating, String artist, String album, String category) {
         mTitle = title;
         mReview = review;
         mRating = rating;
@@ -60,11 +58,11 @@ public class AlbumReview {
         mReview = review;
     }
 
-    public String getRating() {
+    public int getRating() {
         return mRating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(int rating) {
         mRating = rating;
     }
 
@@ -90,5 +88,13 @@ public class AlbumReview {
 
     public void setCategory(String category) {
         mCategory = category;
+    }
+
+    public String getThumbnail() {
+        return mThumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        mThumbnail = thumbnail;
     }
 }

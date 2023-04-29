@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.harmonichyperspace.POJO.Track;
 import com.example.harmonichyperspace.R;
 import com.example.harmonichyperspace.search.moretracksActivity;
+import com.example.harmonichyperspace.search.reviewTrackPage;
 
 import java.util.List;
 
@@ -85,7 +86,7 @@ public class TracksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
-    public static class TrackViewHolder extends RecyclerView.ViewHolder {
+    public class TrackViewHolder extends RecyclerView.ViewHolder {
         private TextView trackName;
         private ImageView trackImage;
 
@@ -93,6 +94,29 @@ public class TracksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             super(itemView);
             trackName = itemView.findViewById(R.id.track_name);
             trackImage = itemView.findViewById(R.id.track_image);
+
+            // Set onClickListener for the track
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION){
+                        Track clickedTrack = tracks.get(position);
+
+                        // Get the data of the selected song
+                        String trackId = clickedTrack.getId(); // Assuming you have a method called getId() in your Track class
+                        String trackName = clickedTrack.getName();
+                        String artistName = clickedTrack.getArtists().get(0).getName();
+                        String trackThumbnail = clickedTrack.getAlbum().getImages().get(0).getUrl();
+
+                        // Use the intentFactory method to create the intent
+                        Intent intent = reviewTrackPage.intentFactory(v.getContext(), trackId, trackName, artistName, trackThumbnail);
+
+                        // Start the reviewTrackPage activity
+                        v.getContext().startActivity(intent);
+                    }
+                }
+            });
         }
     }
 

@@ -58,7 +58,7 @@ public interface harmonicHyperspaceDAO {
     SongReview getSongReviewByReviewId(int reviewId);
 
     @Query("SELECT * FROM " + harmonicHyperspaceDatabase.TRACK_REVIEW_TABLE + " WHERE mUserId = :userId")
-    SongReview getSongReviewByUserId(int userId);
+    List<SongReview> getSongReviewByUserId(int userId);
 
     @Query("SELECT * FROM " + harmonicHyperspaceDatabase.TRACK_REVIEW_TABLE + " WHERE mTitle = :title")
     SongReview getSongReviewByTitle(String title);
@@ -97,7 +97,7 @@ public interface harmonicHyperspaceDAO {
     AlbumReview getAlbumReviewByReviewId(int reviewId);
 
     @Query("SELECT * FROM " + harmonicHyperspaceDatabase.ALBUM_REVIEW_TABLE + " WHERE mUserId = :userId")
-    AlbumReview getAlbumReviewByUserId(int userId);
+    List<AlbumReview> getAlbumReviewByUserId(int userId);
 
     @Query("SELECT * FROM " + harmonicHyperspaceDatabase.ALBUM_REVIEW_TABLE + " WHERE mTitle = :title")
     AlbumReview getAlbumReviewByTitle(String title);
