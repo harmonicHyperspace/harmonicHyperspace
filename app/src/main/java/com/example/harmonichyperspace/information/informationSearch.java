@@ -1,4 +1,6 @@
-package com.example.harmonichyperspace.search;
+package com.example.harmonichyperspace.information;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,17 +11,13 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.harmonichyperspace.MainHomePage;
 import com.example.harmonichyperspace.POJO.SearchResults;
 import com.example.harmonichyperspace.R;
 import com.example.harmonichyperspace.background.SpotifyAuthTask;
 import com.example.harmonichyperspace.background.SpotifyClient;
 import com.example.harmonichyperspace.background.SpotifyService;
-import com.example.harmonichyperspace.discovery.genres;
-import com.example.harmonichyperspace.profile.profile;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.harmonichyperspace.search.search;
+import com.example.harmonichyperspace.search.searchResults;
 
 import java.io.UnsupportedEncodingException;
 
@@ -27,8 +25,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class search extends AppCompatActivity {
-    BottomNavigationView bottomNavigationView;
+public class informationSearch extends AppCompatActivity {
+
     private SearchView mSearchButton;
 
     public static Intent intentFactory(Context context) {
@@ -40,8 +38,7 @@ public class search extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_search);
-        setNavBar();
+        setContentView(R.layout.activity_information_search);
         wireupDisplay();
     }
 
@@ -133,31 +130,5 @@ public class search extends AppCompatActivity {
                 Log.d("Search", "Error: " + t.getMessage());
             }
         });
-    }
-
-    private void setNavBar() {
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.nav_home);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.nav_home:
-                    startActivity(new Intent(getApplicationContext(), MainHomePage.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                case R.id.nav_discovery:
-                    startActivity(new Intent(getApplicationContext(), genres.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                case R.id.nav_search:
-                    return true;
-                case R.id.nav_profile:
-                    startActivity(new Intent(getApplicationContext(), profile.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-            }
-            return false;
-        });
-
     }
 }

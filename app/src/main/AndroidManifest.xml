@@ -16,6 +16,9 @@
         android:theme="@style/Theme.HarmonicHyperspace"
         tools:targetApi="31">
         <activity
+            android:name=".information.informationSearch"
+            android:exported="false" />
+        <activity
             android:name=".search.moretracksActivity"
             android:exported="false" />
         <activity
@@ -34,7 +37,7 @@
             android:name=".search.artist_information"
             android:exported="false" />
         <activity
-            android:name=".search.albulmInformation"
+            android:name=".information.albulmInformation"
             android:exported="false" />
         <activity
             android:name=".search.reviewTrackPage"

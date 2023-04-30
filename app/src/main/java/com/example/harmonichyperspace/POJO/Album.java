@@ -40,4 +40,19 @@ public class Album implements Serializable {
     public void setArtists(List<Artist> artists) {
         this.artists = artists;
     }
+
+    public String getArtistName() {
+        if (artists != null && !artists.isEmpty()) {
+            return artists.get(0).getName();
+        }
+        return "";
+    }
+
+    // Add a new method to get the first image URL
+    public String getImageUrl() {
+        if (images != null && !images.isEmpty()) {
+            return images.get(0).getUrl();
+        }
+        return "";
+    }
 }
