@@ -1,15 +1,12 @@
 package com.example.harmonichyperspace.landing;
 
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
@@ -68,31 +65,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
-
-//    private void logoutUser() {
-//        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-//        alertBuilder.setMessage("Are you sure you want to logout?");
-//
-//        alertBuilder.setPositiveButton(("yes"),
-//                new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        clearUserFromPref();
-//                    }
-//        });
-//        alertBuilder.setNegativeButton(("no"),
-//                new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//
-//        alertBuilder.create().show();
-//    }
-
-//    private void clearUserFromPref() {
-//        Toast.makeText(this, "clear users not yet implemented", Toast.LENGTH_SHORT).show();
-//    }
-
 }

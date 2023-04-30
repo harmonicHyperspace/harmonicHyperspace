@@ -71,8 +71,10 @@ public class signUp extends AppCompatActivity {
                 getValuesFromDisplay();
                 if (checkForUserInDatabase()) {
                     if (emailInDataBase()) {
-                        createUser();
-                        startApp();
+                        User newUser = createUser();
+                        if(newUser != null) {
+                            startApp(newUser);
+                        }
                     }
                 }
             }
@@ -110,20 +112,22 @@ public class signUp extends AppCompatActivity {
 
     }
 
-    private void createUser() {
+    private User createUser() {
 
         User newUser = new User(username, password, email, false);
 
         if (mHarmonicHyperspaceDAO != null) {
             mHarmonicHyperspaceDAO.insert(newUser);
             saveUserId(newUser.getUserId());
+            return newUser;
         } else {
             Log.e(TAG, "DAO object is null");
+            return null;
         }
     }
 
-    private void startApp() {
-        Intent intent = MainHomePage.intentFactory(getApplicationContext(), mUser.getUserId());
+    private void startApp(User newUser) {
+        Intent intent = MainHomePage.intentFactory(getApplicationContext(), newUser.getUserId());
         startActivity(intent);
     }
 
