@@ -2,12 +2,9 @@ package com.example.harmonichyperspace.landing;
 
 import static android.content.ContentValues.TAG;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
 import android.content.Context;
 import android.content.Intent;
-import android.nfc.Tag;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,13 +13,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
+import com.example.harmonichyperspace.DB.User;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
 import com.example.harmonichyperspace.MainHomePage;
 import com.example.harmonichyperspace.R;
-import com.example.harmonichyperspace.databinding.ActivityMainBinding;
-import com.example.harmonichyperspace.discovery.genres;
-import com.example.harmonichyperspace.DB.User;
 
 public class signUp extends AppCompatActivity {
     private EditText mUsernameField;
@@ -38,7 +36,7 @@ public class signUp extends AppCompatActivity {
 
     private harmonicHyperspaceDAO mHarmonicHyperspaceDAO;
 
-    public static Intent intentFactory(Context context){
+    public static Intent intentFactory(Context context) {
         Intent intent = new Intent(context, signUp.class);
         return intent;
     }
@@ -71,8 +69,8 @@ public class signUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getValuesFromDisplay();
-                if (checkForUserInDatabase()){
-                    if(emailInDataBase()){
+                if (checkForUserInDatabase()) {
+                    if (emailInDataBase()) {
                         createUser();
                         startApp();
                     }
@@ -87,9 +85,9 @@ public class signUp extends AppCompatActivity {
 //        });
     }
 
-    private boolean emailInDataBase(){
+    private boolean emailInDataBase() {
         mEmail = mHarmonicHyperspaceDAO.getUserByEmail(email);
-        if(mEmail != null) {
+        if (mEmail != null) {
             Toast.makeText(this, "Email " + email + " has been used before, choose new email", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -98,7 +96,7 @@ public class signUp extends AppCompatActivity {
 
     private boolean checkForUserInDatabase() {
         mUser = mHarmonicHyperspaceDAO.getUserByUsername(username);
-        if(mUser != null) {
+        if (mUser != null) {
             Toast.makeText(this, "Username " + username + " found choose new user name", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -111,20 +109,28 @@ public class signUp extends AppCompatActivity {
         email = mEmailField.getText().toString().trim();
 
     }
-    private void createUser(){
+
+    private void createUser() {
 
         User newUser = new User(username, password, email, false);
 
-        if(mHarmonicHyperspaceDAO != null) {
+        if (mHarmonicHyperspaceDAO != null) {
             mHarmonicHyperspaceDAO.insert(newUser);
-        }
-        else{
-            Log.e(TAG, "DAO object is null" );
+            saveUserId(newUser.getUserId());
+        } else {
+            Log.e(TAG, "DAO object is null");
         }
     }
 
     private void startApp() {
         Intent intent = MainHomePage.intentFactory(getApplicationContext(), mUser.getUserId());
         startActivity(intent);
+    }
+
+    private void saveUserId(int userId) {
+        SharedPreferences sharedPreferences = getSharedPreferences("hyperspaceData", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("userId", String.valueOf(userId));
+        editor.apply();
     }
 }

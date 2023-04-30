@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.harmonichyperspace.POJO.Album;
 import com.example.harmonichyperspace.R;
-import com.example.harmonichyperspace.search.albulmInformation;
 import com.example.harmonichyperspace.search.moretracksActivity;
+import com.example.harmonichyperspace.search.reviewAlbulmPage;
 
 import java.util.List;
 
@@ -108,8 +108,23 @@ public class AlbumsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 @Override
                 public void onClick(View v) {
                     // Start the activity that displays the album
-                    Intent intent = new Intent(context, albulmInformation.class);
-                    context.startActivity(intent);
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        Album clickedAlbum = albums.get(position);
+
+                        //get the data from the album and pass it to the next activity
+                        String albumId = clickedAlbum.getId();
+                        String albumName = clickedAlbum.getName();
+                        String albumImage = clickedAlbum.getImages().get(0).getUrl();
+                        String artistName = clickedAlbum.getArtists().get(0).getName();
+                        String genre = "genre";
+
+                        //create the intent
+                        Intent intent = reviewAlbulmPage.intentFactory(context, albumId, albumName, artistName, genre, albumImage);
+
+                        //start the activity
+                        context.startActivity(intent);
+                    }
                 }
             });
         }

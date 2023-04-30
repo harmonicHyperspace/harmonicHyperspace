@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 7,
-    "identityHash": "c1cadf01e93067a0880a90cf86c6ab2f",
+    "identityHash": "e32c4bfb04664234d6771cf7a6cb2a7a",
     "entities": [
       {
         "tableName": "user_table",
@@ -62,7 +62,7 @@
       },
       {
         "tableName": "track_review_table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mReviewId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mUserId` INTEGER NOT NULL, `mTitle` TEXT, `mReview` TEXT, `mRating` TEXT, `mSong` TEXT, `mArtist` TEXT, `mAlbum` TEXT, `mCategory` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mReviewId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mUserId` INTEGER NOT NULL, `mTitle` TEXT, `mReview` TEXT, `mRating` TEXT, `mSong` TEXT, `mArtist` TEXT, `mAlbum` TEXT, `mCategory` TEXT, `mThumbnail` TEXT)",
         "fields": [
           {
             "fieldPath": "mReviewId",
@@ -117,6 +117,12 @@
             "columnName": "mCategory",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "mThumbnail",
+            "columnName": "mThumbnail",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -130,7 +136,7 @@
       },
       {
         "tableName": "album_review_table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mReviewId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mUserId` INTEGER NOT NULL, `mTitle` TEXT, `mReview` TEXT, `mRating` TEXT, `mArtist` TEXT, `mAlbum` TEXT, `mCategory` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mReviewId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mUserId` INTEGER NOT NULL, `mTitle` TEXT, `mReview` TEXT, `mRating` TEXT, `mArtist` TEXT, `mAlbum` TEXT, `mCategory` TEXT, `mThumbnail` TEXT)",
         "fields": [
           {
             "fieldPath": "mReviewId",
@@ -179,6 +185,12 @@
             "columnName": "mCategory",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "mThumbnail",
+            "columnName": "mThumbnail",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -194,7 +206,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c1cadf01e93067a0880a90cf86c6ab2f')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e32c4bfb04664234d6771cf7a6cb2a7a')"
     ]
   }
 }

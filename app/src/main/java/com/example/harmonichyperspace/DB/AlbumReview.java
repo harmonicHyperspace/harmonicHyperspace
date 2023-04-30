@@ -10,14 +10,14 @@ public class AlbumReview {
     private int mUserId;
     private String mTitle;
     private String mReview;
-    private int mRating;
+    private String mRating;
     private String mArtist;
     private String mAlbum;
     private String mCategory;
     private String mThumbnail;
 //    private Date mDate;
 
-    public AlbumReview(String title, String review, int rating, String artist, String album, String category) {
+    public AlbumReview(String title, String review, String rating, String artist, String album, String category) {
         mTitle = title;
         mReview = review;
         mRating = rating;
@@ -58,11 +58,11 @@ public class AlbumReview {
         mReview = review;
     }
 
-    public int getRating() {
+    public String getRating() {
         return mRating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(String rating) {
         mRating = rating;
     }
 

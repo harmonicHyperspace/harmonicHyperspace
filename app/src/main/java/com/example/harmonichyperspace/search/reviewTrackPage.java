@@ -2,6 +2,7 @@ package com.example.harmonichyperspace.search;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -52,8 +53,15 @@ public class reviewTrackPage extends AppCompatActivity {
         //Initialize the DAO
         getDatabase();
 
+        //attaching information and such
         wiringUpDisplay();
 
+        //get the intent extras and set them to the fields
+        getIntentExtras();
+
+    }
+
+    private void getIntentExtras() {
         ImageView trackThumbnail = findViewById(R.id.trackThumbnail);
         TextView trackName = findViewById(R.id.trackName);
         TextView artistName = findViewById(R.id.trackInfo);
@@ -102,7 +110,11 @@ public class reviewTrackPage extends AppCompatActivity {
 
 
     private void saveReview() {
-        String userId = "1";
+        String userId = getUserId();
+        if (userId == null) {
+            Log.d("ReviewTrackPage", "User ID is null");
+            return;
+        }
         String title = mTitleField.getText().toString();
         String review = mReviewField.getText().toString();
         String rating = mRatingField.getText().toString();
@@ -113,9 +125,13 @@ public class reviewTrackPage extends AppCompatActivity {
         //String thumbnail = mThumbnailField;
 
         SongReview newReview = new SongReview(userId, title, review, rating, song, artist, albulm, category);
-        harmonicHyperspaceDatabase db = Room.databaseBuilder(getApplicationContext(), harmonicHyperspaceDatabase.class, "harmonicHyperspaceDatabase").build();
         mHarmonicHyperspaceDAO.insert(newReview);
 
+    }
+
+    private String getUserId() {
+        SharedPreferences sharedPreferences = getSharedPreferences("hyperspacePrefs", MODE_PRIVATE);
+        return sharedPreferences.getString("userId", null);
     }
 
     public void getDatabase() {

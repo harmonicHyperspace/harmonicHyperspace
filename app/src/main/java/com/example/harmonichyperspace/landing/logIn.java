@@ -2,6 +2,7 @@ package com.example.harmonichyperspace.landing;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -13,14 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import com.example.harmonichyperspace.DB.DatabaseCallback;
+import com.example.harmonichyperspace.DB.User;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
 import com.example.harmonichyperspace.MainHomePage;
 import com.example.harmonichyperspace.R;
-import com.example.harmonichyperspace.DB.User;
-import com.example.harmonichyperspace.discovery.genres;
-import com.example.harmonichyperspace.profile.profile;
-import com.example.harmonichyperspace.search.search;
 
 public class logIn extends AppCompatActivity {
     private EditText mUsernameField;
@@ -58,14 +56,16 @@ public class logIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getValuesFromDisplay();
-                if(checkForUserInDatabase()) {
-                    if(!validatePassword()){
+                if (checkForUserInDatabase()) {
+                    if (!validatePassword()) {
                         Toast.makeText(getApplicationContext(), "Incorrect password", Toast.LENGTH_SHORT).show();
-                    }else{
+                    } else {
+                        saveUserId(mUser.getUserId());
                         Intent intent = MainHomePage.intentFactory(getApplicationContext(), mUser.getUserId());
                         startActivity(intent);
                     }
-                };
+                }
+                ;
             }
         });
     }
@@ -76,7 +76,7 @@ public class logIn extends AppCompatActivity {
 
     private boolean checkForUserInDatabase() {
         mUser = mHarmonicHyperspaceDAO.getUserByUsername(mUsername);
-        if(mUser == null) {
+        if (mUser == null) {
             Toast.makeText(this, "No user " + mUsername + " found", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -96,5 +96,12 @@ public class logIn extends AppCompatActivity {
                 .harmonicHyperspaceDAO();
 
 
+    }
+
+    private void saveUserId(int userId) {
+        SharedPreferences sharedPreferences = getSharedPreferences("hyperspaceData", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("userId", String.valueOf(userId));
+        editor.apply();
     }
 }

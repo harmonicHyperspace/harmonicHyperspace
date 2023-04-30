@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 6,
-    "identityHash": "6f3a010eca069f6b100d3ad4cb9d5ff2",
+    "identityHash": "e32c4bfb04664234d6771cf7a6cb2a7a",
     "entities": [
       {
         "tableName": "user_table",
@@ -136,7 +136,7 @@
       },
       {
         "tableName": "album_review_table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mReviewId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mUserId` INTEGER NOT NULL, `mTitle` TEXT, `mReview` TEXT, `mRating` INTEGER NOT NULL, `mArtist` TEXT, `mAlbum` TEXT, `mCategory` TEXT, `mThumbnail` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mReviewId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mUserId` INTEGER NOT NULL, `mTitle` TEXT, `mReview` TEXT, `mRating` TEXT, `mArtist` TEXT, `mAlbum` TEXT, `mCategory` TEXT, `mThumbnail` TEXT)",
         "fields": [
           {
             "fieldPath": "mReviewId",
@@ -165,8 +165,8 @@
           {
             "fieldPath": "mRating",
             "columnName": "mRating",
-            "affinity": "INTEGER",
-            "notNull": true
+            "affinity": "TEXT",
+            "notNull": false
           },
           {
             "fieldPath": "mArtist",
@@ -206,7 +206,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6f3a010eca069f6b100d3ad4cb9d5ff2')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e32c4bfb04664234d6771cf7a6cb2a7a')"
     ]
   }
 }

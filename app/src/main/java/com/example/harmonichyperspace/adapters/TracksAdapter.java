@@ -21,11 +21,11 @@ import com.example.harmonichyperspace.search.reviewTrackPage;
 import java.util.List;
 
 public class TracksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private Context context;
-    private List<Track> tracks;
     private static final int ITEM_VIEW_TYPE_TRACK = 0;
     private static final int ITEM_VIEW_TYPE_SHOW_MORE = 1;
     private static final int MAX_ITEMS = 3;
+    private Context context;
+    private List<Track> tracks;
 
     public TracksAdapter(Context context, List<Track> tracks) {
         this.context = context;
@@ -86,6 +86,15 @@ public class TracksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
+    public static class ShowMoreViewHolder extends RecyclerView.ViewHolder {
+        Button showMoreButton;
+
+        public ShowMoreViewHolder(@NonNull View itemView) {
+            super(itemView);
+            showMoreButton = itemView.findViewById(R.id.btn_show_more);
+        }
+    }
+
     public class TrackViewHolder extends RecyclerView.ViewHolder {
         private TextView trackName;
         private ImageView trackImage;
@@ -100,7 +109,7 @@ public class TracksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION){
+                    if (position != RecyclerView.NO_POSITION) {
                         Track clickedTrack = tracks.get(position);
 
                         // Get the data of the selected song
@@ -117,15 +126,6 @@ public class TracksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     }
                 }
             });
-        }
-    }
-
-    public static class ShowMoreViewHolder extends RecyclerView.ViewHolder {
-        Button showMoreButton;
-
-        public ShowMoreViewHolder(@NonNull View itemView) {
-            super(itemView);
-            showMoreButton = itemView.findViewById(R.id.btn_show_more);
         }
     }
 }

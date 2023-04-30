@@ -10,7 +10,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.migration.AutoMigrationSpec;
 
-@Database( entities = {User.class, SongReview.class, AlbumReview.class},version = 6)
+@Database( entities = {User.class, SongReview.class, AlbumReview.class},version = 7)
 
 public abstract class harmonicHyperspaceDatabase extends RoomDatabase {
     public static final String DATABASE_NAME = "harmonicHyperspace.db";
