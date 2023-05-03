@@ -27,7 +27,7 @@ public class profile extends AppCompatActivity {
     User user;
 
     private Button mEditProfile;
-    private String mUsername;
+    private TextView mUsername;
     private ImageView mprofilepic;
     //private TextView mUser;
     private harmonicHyperspaceDAO mHarmonicHyperspaceDAO;
@@ -42,20 +42,32 @@ public class profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_profile);
-
+        image();
         setNavBar();
         harmonicHyperspaceDatabase db = harmonicHyperspaceDatabase.getInstance(this);
         mHarmonicHyperspaceDAO = db.harmonicHyperspaceDAO();
-
         //getUsername();
         wiredDisplay();
+
     }
 
-//    private void getUsername(){
-//        mUser.setText(mHarmonicHyperspaceDAO.getUserByUsername(mUsername).toString());
-//    }
-    private void wiredDisplay() {
+    private void getUsername() {
+        String username = this.user.getUsername();
+        mUsername = findViewById(R.id.usernameView);
+        mUsername.setText(username);
 
+    }
+
+    private void image(){
+        mprofilepic = findViewById(R.id.profilePic);
+        String urlPic = "https://cdn.discordapp.com/attachments/1020212941146042399/1103180175669202964/IMG_5215.jpg";
+        Picasso.get().load(urlPic).into(mprofilepic);
+
+    }
+
+
+    private void wiredDisplay() {
+        mEditProfile = findViewById(R.id.editProfile);
         mEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
