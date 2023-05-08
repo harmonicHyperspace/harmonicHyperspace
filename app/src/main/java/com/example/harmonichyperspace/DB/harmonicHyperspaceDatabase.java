@@ -27,6 +27,7 @@ public abstract class harmonicHyperspaceDatabase extends RoomDatabase {
                     instance = Room.databaseBuilder(context.getApplicationContext(),
                                     harmonicHyperspaceDatabase.class, DATABASE_NAME)
                             .fallbackToDestructiveMigration()
+                            .allowMainThreadQueries()
                             .build();
                 }
             }

@@ -63,7 +63,8 @@ public class MainHomePage extends AppCompatActivity {
                     overridePendingTransition(0, 0);
                     return true;
                 case R.id.nav_profile:
-                    startActivity(new Intent(getApplicationContext(), profile.class));
+                    Intent intent = (new Intent(getApplicationContext(), profile.class));
+                    startActivity(intent);
                     overridePendingTransition(0, 0);
                     return true;
             }
