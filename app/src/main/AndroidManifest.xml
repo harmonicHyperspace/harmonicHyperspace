@@ -62,6 +62,9 @@
             android:name=".landing.signUp"
             android:exported="false" />
         <activity
+            android:name=".profile.Image"
+            android:exported="false"/>
+        <activity
             android:name=".landing.MainActivity"
             android:exported="true">
             <intent-filter>

@@ -1,16 +1,21 @@
 package com.example.harmonichyperspace.profile;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.harmonichyperspace.DB.User;
@@ -19,6 +24,7 @@ import com.example.harmonichyperspace.R;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
 
 import com.example.harmonichyperspace.landing.signUp;
+import com.squareup.picasso.Picasso;
 
 public class editProfile extends AppCompatActivity {
 
@@ -30,13 +36,17 @@ public class editProfile extends AppCompatActivity {
     private EditText mEditEmail;
     private EditText mEditBio;
     User currentUser;
+    private int mUserId;
 
     String mNewUserName;
     String mNewUserEmail;
     String mNewUserBio;
     String mNewName;
+    private static final String USER_ID_Key = "com.example.harmonichyperspace.useridKey";
+    private static final String PREFRENCE_KEY = "com.example.harmonichyperspace.preferenceKey";
 
     private harmonicHyperspaceDAO mHarmonicHyperspaceDAO;
+    private ImageView mprofilepic;
 
     public static Intent intentFactory(Context context){
         Intent intent = new Intent(context, editProfile.class);
@@ -49,15 +59,35 @@ public class editProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_edit_profile);
-
-        harmonicHyperspaceDatabase db = harmonicHyperspaceDatabase.getInstance(this);
-        mHarmonicHyperspaceDAO = db.harmonicHyperspaceDAO();
-
-        wiringUpDisplay();
         mHarmonicHyperspaceDAO = Room.databaseBuilder(this, harmonicHyperspaceDatabase.class, harmonicHyperspaceDatabase.DATABASE_NAME)
                 .allowMainThreadQueries()
                 .build()
                 .harmonicHyperspaceDAO();
+        setUser();
+        wiringUpDisplay();
+    }
+
+    private void setUser() {
+        SharedPreferences preferences = getSharedPreferences(PREFRENCE_KEY,Context.MODE_PRIVATE);
+        mUserId = preferences.getInt(USER_ID_Key,-1);
+        if (mUserId != 1){
+            currentUser = mHarmonicHyperspaceDAO.getUserByUserId(mUserId);
+            if(currentUser == null){
+                Log.e(TAG, "User not found");
+            }
+            else{
+                mprofilepic = findViewById(R.id.editPic);
+                String urlPic = "https://cdn.discordapp.com/attachments/1020212941146042399/1103180175669202964/IMG_5215.jpg";
+                Picasso.get()
+                        .load(urlPic)
+                        //.placeholder(R.drawable.applogo)
+                        //.error(R.drawable.baseline_person_24)
+                        .into(mprofilepic);
+
+            }
+        }else{
+            Log.e(TAG, "Invalid User Id");
+        }
     }
 
     private void wiringUpDisplay(){
@@ -106,7 +136,10 @@ public class editProfile extends AppCompatActivity {
     }
 
     private boolean usernameUsed(){
-        if(mHarmonicHyperspaceDAO.getUserByUsername(mNewUserBio) != null){
+        if (mNewUserName == ""){
+            return true;
+        }
+        if(mHarmonicHyperspaceDAO.getUserByUsername(mNewUserName) != null){
             Toast.makeText(this, "Username " + mNewUserName + " found choose new user name", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -116,7 +149,10 @@ public class editProfile extends AppCompatActivity {
     }
 
     private boolean emailUsed() {
-        if (mNewUserEmail != null) {
+        if (mNewUserEmail == ""){
+            return true;
+        }
+        if (mHarmonicHyperspaceDAO.getUserByEmail(mNewUserEmail) != null){
             Toast.makeText(this, "Email " + mNewUserEmail + " has already been used", Toast.LENGTH_SHORT).show();
             return false;
         } else {
@@ -129,10 +165,20 @@ public class editProfile extends AppCompatActivity {
     }
 
     private void updateUser(){
-        currentUser.setUsername(mNewUserName);
-        currentUser.setName(mNewName);
-        currentUser.setEmail(mNewUserEmail);
-        currentUser.setBio(mNewUserBio);
+        if(mNewUserName.trim().length() > 0){
+            currentUser.setUsername(mNewUserName);
+        }
+        if(mNewName.trim().length() > 0){
+            currentUser.setName(mNewName);
+        }
+        if(mNewUserEmail.trim().length() > 0){
+            currentUser.setEmail(mNewUserEmail);
+        }
+        if(mNewUserBio.trim().length() > 0){
+            currentUser.setBio(mNewUserBio);
+        }
+
+        mHarmonicHyperspaceDAO.update(currentUser);
         }
     }
 

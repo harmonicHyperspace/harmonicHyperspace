@@ -59,7 +59,7 @@ public class profile extends AppCompatActivity {
 //                .build()
 //                .harmonicHyperspaceDAO();
 
-        setUser();
+        getUser();
         image();
         setNavBar();
         wiredDisplay();
@@ -67,7 +67,7 @@ public class profile extends AppCompatActivity {
     }
 
 
-    private void setUser() {
+    private void getUser() {
         SharedPreferences preferences = getSharedPreferences(PREFRENCE_KEY, Context.MODE_PRIVATE);
         mUserId = preferences.getInt(USER_ID_Key, -1);
         if (mUserId != -1) {
@@ -88,7 +88,12 @@ public class profile extends AppCompatActivity {
     private void image(){
         mprofilepic = findViewById(R.id.profilePic);
         String urlPic = "https://cdn.discordapp.com/attachments/1020212941146042399/1103180175669202964/IMG_5215.jpg";
-        Picasso.get().load(urlPic).into(mprofilepic);
+        Picasso.get()
+                .load(urlPic)
+                //.placeholder(R.drawable.applogo)
+                //.error(R.drawable.baseline_person_24)
+                .into(mprofilepic);
+
 
     }
 
