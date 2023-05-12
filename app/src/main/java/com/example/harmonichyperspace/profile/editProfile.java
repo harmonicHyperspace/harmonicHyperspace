@@ -74,12 +74,11 @@ public class editProfile extends AppCompatActivity {
                 Log.e(TAG, "User not found");
             }
             else{
+                //urlPic = mUrl.getText().toString.trim();
                 mprofilepic = findViewById(R.id.editPic);
                 String urlPic = "https://cdn.discordapp.com/attachments/1020212941146042399/1103180175669202964/IMG_5215.jpg";
                 Picasso.get()
                         .load(urlPic)
-                        //.placeholder(R.drawable.applogo)
-                        //.error(R.drawable.baseline_person_24)
                         .into(mprofilepic);
 
             }

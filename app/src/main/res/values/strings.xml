@@ -55,4 +55,6 @@
     <string name="preview_image">Preview Image</string>
     <string name="save_image">Save Image</string>
     <string name="select_image">Select Image</string>
+    <string name="edit_profile2">Edit Profile</string>
+    <string name="Logout">Logout</string>
 </resources>

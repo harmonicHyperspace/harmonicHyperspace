@@ -14,6 +14,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
@@ -24,6 +25,7 @@ import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
 import com.example.harmonichyperspace.MainHomePage;
 import com.example.harmonichyperspace.R;
 import com.example.harmonichyperspace.discovery.genres;
+import com.example.harmonichyperspace.landing.MainActivity;
 import com.example.harmonichyperspace.search.search;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
@@ -36,6 +38,7 @@ public class profile extends AppCompatActivity {
     private TextView mBio;
     private ImageView mprofilepic;
     private int mUserId;
+    private Button mLogout;
     User currentUser;
     private static final String USER_ID_Key = "com.example.harmonichyperspace.useridKey";
     private static final String PREFRENCE_KEY = "com.example.harmonichyperspace.preferenceKey";
@@ -89,50 +92,29 @@ public class profile extends AppCompatActivity {
 
 
     private void image(){
+        //urlPic = mUrl.getText().toString.trim();
         mprofilepic = findViewById(R.id.profilePic);
         String urlPic = "https://cdn.discordapp.com/attachments/1020212941146042399/1103180175669202964/IMG_5215.jpg";
         Picasso.get()
                 .load(urlPic)
-                //.placeholder(R.drawable.applogo)
-                //.error(R.drawable.baseline_person_24)
                 .into(mprofilepic);
     }
-//        mprofilepic = findViewById(R.id.profilePic);
-//        //String picture = currentUser.getprofilepic();
-////        if(picture == img1){
-////            Picasso.get()
-////                    .load(R.drawable.applogo)
-////                    .placeholder(R.drawable.applogo)
-////                    .into(mprofilepic);
-////        }
-////        else if(picture == img2){
-////            Picasso.get()
-////                    .load(R.drawable.applogo)
-////                    .placeholder(R.drawable.applogo)
-////                    .into(mprofilepic);
-////        }
-////        else{
-////            Picasso.get()
-////                    .load(R.drawable.applogo)
-////                    .placeholder(R.drawable.applogo)
-////                    .into(mprofilepic);
-////        }
-//
-//        Picasso.get()
-//                .load(R.drawable.applogo)
-//                .placeholder(R.drawable.applogo)
-//
-//                .into(mprofilepic);
-//
-//
-//    }
 
 
     private void wiredDisplay() {
+        mLogout = findViewById(R.id.Logout);
         mUsername = findViewById(R.id.usernameView);
         mEditProfile = findViewById(R.id.editProfile);
         mBio = findViewById(R.id.profileInfo);
         mBio.setText(currentUser.getBio());
+
+        mLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
         mEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
