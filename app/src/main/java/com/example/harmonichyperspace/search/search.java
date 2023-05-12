@@ -17,7 +17,6 @@ import com.example.harmonichyperspace.R;
 import com.example.harmonichyperspace.background.SpotifyAuthTask;
 import com.example.harmonichyperspace.background.SpotifyClient;
 import com.example.harmonichyperspace.background.SpotifyService;
-import com.example.harmonichyperspace.discovery.genres;
 import com.example.harmonichyperspace.profile.profile;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -145,10 +144,10 @@ public class search extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), MainHomePage.class));
                     overridePendingTransition(0, 0);
                     return true;
-                case R.id.nav_discovery:
-                    startActivity(new Intent(getApplicationContext(), genres.class));
-                    overridePendingTransition(0, 0);
-                    return true;
+//                case R.id.nav_discovery:
+//                    startActivity(new Intent(getApplicationContext(), MainHomePage.class));
+//                    overridePendingTransition(0, 0);
+//                    return true;
                 case R.id.nav_search:
                     return true;
                 case R.id.nav_profile:

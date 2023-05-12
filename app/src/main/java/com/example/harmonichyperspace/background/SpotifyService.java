@@ -2,6 +2,7 @@ package com.example.harmonichyperspace.background;
 
 
 import com.example.harmonichyperspace.POJO.Album;
+import com.example.harmonichyperspace.POJO.NewReleasesResponse;
 import com.example.harmonichyperspace.POJO.SearchResults;
 
 import retrofit2.Call;
@@ -19,5 +20,11 @@ public interface SpotifyService {
     @GET("albums/{id}")
     Call<Album> getAlbum(
             @Path("id") String albumId
+    );
+
+    @GET("browse/new-releases")
+    Call<NewReleasesResponse> getNewReleases(
+            @Query("limit") int limit,
+            @Query("offset") int offset
     );
 }

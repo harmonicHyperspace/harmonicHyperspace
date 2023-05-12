@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.harmonichyperspace.MainHomePage;
 import com.example.harmonichyperspace.R;
-import com.example.harmonichyperspace.discovery.genres;
 import com.example.harmonichyperspace.search.search;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -32,10 +31,6 @@ public class profile extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.nav_home:
                     startActivity(new Intent(getApplicationContext(), MainHomePage.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                case R.id.nav_discovery:
-                    startActivity(new Intent(getApplicationContext(), genres.class));
                     overridePendingTransition(0, 0);
                     return true;
                 case R.id.nav_search:

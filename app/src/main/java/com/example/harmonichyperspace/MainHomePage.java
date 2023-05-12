@@ -12,7 +12,6 @@ import androidx.room.Room;
 import com.example.harmonichyperspace.DB.User;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
-import com.example.harmonichyperspace.discovery.genres;
 import com.example.harmonichyperspace.profile.profile;
 import com.example.harmonichyperspace.search.search;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -53,10 +52,6 @@ public class MainHomePage extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_home:
-                    return true;
-                case R.id.nav_discovery:
-                    startActivity(new Intent(getApplicationContext(), genres.class));
-                    overridePendingTransition(0, 0);
                     return true;
                 case R.id.nav_search:
                     startActivity(new Intent(getApplicationContext(), search.class));

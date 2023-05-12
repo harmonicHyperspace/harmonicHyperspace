@@ -1,17 +1,19 @@
 package com.example.harmonichyperspace.background;
 
+import com.example.harmonichyperspace.POJO.NewReleasesResponse;
+
 import java.io.IOException;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SpotifyClient {
     private static final String BASE_URL = "https://api.spotify.com/v1/";
-
     public static SpotifyService createSpotifyService(String accessToken) {
         OkHttpClient httpClient = new OkHttpClient.Builder()
                 .addInterceptor(new AccessTokenInterceptor(accessToken))
@@ -25,7 +27,6 @@ public class SpotifyClient {
 
         return retrofit.create(SpotifyService.class);
     }
-
     public static class AccessTokenInterceptor implements Interceptor{
         private String accessToken;
 

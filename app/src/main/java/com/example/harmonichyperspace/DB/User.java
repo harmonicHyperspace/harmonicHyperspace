@@ -18,6 +18,7 @@ public class User {
     private String mName;
     private String mEmail;
     private String mBio;
+    private String mProfilePic;
 
     @ColumnInfo(name = "is_admin")
     private boolean isAdmin;
@@ -90,5 +91,13 @@ public class User {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public String getProfilePic() {
+        return mProfilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        mProfilePic = profilePic;
     }
 }
