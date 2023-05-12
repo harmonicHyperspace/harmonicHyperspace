@@ -33,6 +33,7 @@ public class profile extends AppCompatActivity {
 
     private Button mEditProfile;
     private TextView mUsername;
+    private TextView mBio;
     private ImageView mprofilepic;
     private int mUserId;
     User currentUser;
@@ -78,6 +79,8 @@ public class profile extends AppCompatActivity {
                 String username = currentUser.getUsername();
                 mUsername = findViewById(R.id.usernameView);
                 mUsername.setText(username);
+
+
             }
         }else {
                 Log.e(TAG, "Invalid user Id");
@@ -93,20 +96,50 @@ public class profile extends AppCompatActivity {
                 //.placeholder(R.drawable.applogo)
                 //.error(R.drawable.baseline_person_24)
                 .into(mprofilepic);
-
-
     }
+//        mprofilepic = findViewById(R.id.profilePic);
+//        //String picture = currentUser.getprofilepic();
+////        if(picture == img1){
+////            Picasso.get()
+////                    .load(R.drawable.applogo)
+////                    .placeholder(R.drawable.applogo)
+////                    .into(mprofilepic);
+////        }
+////        else if(picture == img2){
+////            Picasso.get()
+////                    .load(R.drawable.applogo)
+////                    .placeholder(R.drawable.applogo)
+////                    .into(mprofilepic);
+////        }
+////        else{
+////            Picasso.get()
+////                    .load(R.drawable.applogo)
+////                    .placeholder(R.drawable.applogo)
+////                    .into(mprofilepic);
+////        }
+//
+//        Picasso.get()
+//                .load(R.drawable.applogo)
+//                .placeholder(R.drawable.applogo)
+//
+//                .into(mprofilepic);
+//
+//
+//    }
 
 
     private void wiredDisplay() {
         mUsername = findViewById(R.id.usernameView);
         mEditProfile = findViewById(R.id.editProfile);
+        mBio = findViewById(R.id.profileInfo);
+        mBio.setText(currentUser.getBio());
         mEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startEditProfile();
             }
         });
+
     }
 
     private void startEditProfile(){

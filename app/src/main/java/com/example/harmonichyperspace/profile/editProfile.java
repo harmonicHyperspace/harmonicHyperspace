@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -23,7 +22,6 @@ import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
 import com.example.harmonichyperspace.R;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
 
-import com.example.harmonichyperspace.landing.signUp;
 import com.squareup.picasso.Picasso;
 
 public class editProfile extends AppCompatActivity {
@@ -102,7 +100,7 @@ public class editProfile extends AppCompatActivity {
         mPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Image.class);
+                Intent intent = new Intent(getApplicationContext(), image.class);
                 startActivity(intent);
             }
         });

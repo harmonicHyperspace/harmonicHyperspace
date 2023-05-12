@@ -14,9 +14,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="140dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -24,21 +25,80 @@
         android:id="@+id/saveImage"
         android:layout_width="150dp"
         android:layout_height="55dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="292dp"
-        android:hint="Save Image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profilePic" />
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="16dp"
+        android:hint="@string/save_image"
+        app:layout_constraintStart_toEndOf="@id/imagePrev"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/previewImage"
-        android:layout_width="150dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="100dp"
-        android:hint="Preview Image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profilePic" />
+<!--    <ImageView-->
+<!--        android:id="@+id/image1"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginTop="264dp"-->
+<!--        android:layout_marginEnd="272dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:srcCompat="@tools:sample/avatars" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/img1"-->
+<!--        android:layout_width="150dp"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:layout_marginStart="100dp"-->
+<!--        android:layout_marginTop="288dp"-->
+<!--        android:hint="@string/select_image"-->
+<!--        app:layout_constraintStart_toEndOf="@id/image1"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/image2"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginTop="524dp"-->
+<!--        android:layout_marginEnd="272dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:srcCompat="@tools:sample/avatars" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/img2"-->
+<!--        android:layout_width="150dp"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:layout_marginStart="104dp"-->
+<!--        android:layout_marginTop="416dp"-->
+<!--        android:hint="@string/select_image"-->
+<!--        app:layout_constraintStart_toEndOf="@id/image3"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/img3"-->
+<!--        android:layout_width="150dp"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:layout_marginStart="104dp"-->
+<!--        android:layout_marginTop="548dp"-->
+<!--        android:hint="@string/select_image"-->
+<!--        app:layout_constraintStart_toEndOf="@id/image2"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/image3"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginTop="396dp"-->
+<!--        android:layout_marginEnd="272dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:srcCompat="@tools:sample/avatars" />-->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
