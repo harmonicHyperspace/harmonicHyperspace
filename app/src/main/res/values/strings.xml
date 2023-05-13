@@ -57,4 +57,7 @@
     <string name="select_image">Select Image</string>
     <string name="edit_profile2">Edit Profile</string>
     <string name="Logout">Logout</string>
+    <string name="Ban_Users">Ban Users</string>
+    <string name="enter_username_to_ban">Enter username to ban</string>
+    <string name="Confirm">Confirm</string>
 </resources>

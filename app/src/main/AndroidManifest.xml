@@ -51,6 +51,9 @@
             android:name=".search.search"
             android:exported="false" />
         <activity
+            android:name=".profile.Admin"
+            android:exported="false"/>
+        <activity
             android:name=".discovery.albums"
             android:exported="false" />
         <activity

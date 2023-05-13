@@ -38,6 +38,7 @@ public class profile extends AppCompatActivity {
     private ImageView mprofilepic;
     private int mUserId;
     private Button mLogout;
+    private Button mBan;
     User currentUser;
     private static final String USER_ID_Key = "com.example.harmonichyperspace.useridKey";
     private static final String PREFRENCE_KEY = "com.example.harmonichyperspace.preferenceKey";
@@ -66,6 +67,21 @@ public class profile extends AppCompatActivity {
         image();
         setNavBar();
         wiredDisplay();
+        if(currentUser.isAdmin()){
+            removeuser();
+        }
+
+    }
+
+    private void removeuser() {
+        mBan = findViewById(R.id.Admin);
+        mBan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Admin.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
