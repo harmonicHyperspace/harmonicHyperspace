@@ -29,6 +29,16 @@ public class User {
         mPassword = password;
         mEmail = email;
         this.isAdmin = isAdmin;
+
+    }
+    public User(String username, String password, String email, String name, String bio, String profilePic, boolean isAdmin) {
+        mUsername = username;
+        mPassword = password;
+        mEmail = email;
+        mName = name;
+        mBio = bio;
+        mProfilePic = profilePic;
+        this.isAdmin = isAdmin;
     }
 
 //    public User(String username, String password, String email){
