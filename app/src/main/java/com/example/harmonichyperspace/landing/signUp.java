@@ -129,7 +129,7 @@ public class signUp extends AppCompatActivity {
 
     private void createUser() {
 
-        mUser = new User(username, password, email, false);
+        mUser = new User(username, password, email,"deafult","Empty","https://cdn.discordapp.com/attachments/1070198307281969255/1106082024680333392/IMG_5215.jpg", false);
 
         if (mHarmonicHyperspaceDAO != null) {
             mHarmonicHyperspaceDAO.insert(mUser);

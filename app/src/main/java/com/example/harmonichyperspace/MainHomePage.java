@@ -93,7 +93,7 @@ public class MainHomePage extends AppCompatActivity {
         //do we have a user at all?
         List<User> users = mharmonicHyperspaceDAO.getAllUsers();
         if (users.size() <= 0) {
-            User defaultUser = new User("admin", "admin", "admin", true);
+            User defaultUser = new User("admin", "admin", "admin","admin","admin","https://cdn.discordapp.com/attachments/1070198307281969255/1106082024680333392/IMG_5215.jpg", true);
             mharmonicHyperspaceDAO.insert(defaultUser);
         }
 

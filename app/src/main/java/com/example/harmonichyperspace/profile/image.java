@@ -21,7 +21,6 @@ import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
 import com.example.harmonichyperspace.MainHomePage;
 import com.example.harmonichyperspace.R;
-import com.example.harmonichyperspace.discovery.genres;
 import com.example.harmonichyperspace.search.search;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
@@ -56,37 +55,36 @@ public class image extends AppCompatActivity {
     }
 
     private void wiringUpDisplay() {
-        mProfileImage = findViewById(R.id.imagePrev);
-        mPreview = findViewById(R.id.refresh);
+        //mPreview = findViewById(R.id.refresh);
         mUrl = findViewById(R.id.urlPic);
         mSave = findViewById(R.id.saveImage);
-
-//        mSave.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //urlPic = mUrl.getText().toString.trim();
-//                //currentUser.setProfilePic(urlPic);
-//                //mHarmonicHyperspaceDAO.update(currentUser);
-//                //Intent intent = (new Intent(getApplicationContext(), editProfile.class));
-//                //        startActivity(intent);
-//            }
-//        });
-
-        mPreview.setOnClickListener(new View.OnClickListener() {
+//
+        mSave.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                setDisplay();
+            public void onClick(View view){
+                urlPic = mUrl.getText().toString().trim();
+                currentUser.setProfilePic(urlPic);
+                mHarmonicHyperspaceDAO.update(currentUser);
+                Intent intent = (new Intent(getApplicationContext(), editProfile.class));
+                        startActivity(intent);
             }
         });
+
+//        mPreview.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                setDisplay();
+//            }
+//        });
 
     }
 
     private void setDisplay() {
-        //urlPic = mUrl.getText().toString.trim();
-//        String urlPic = "https://cdn.discordapp.com/attachments/1020212941146042399/1103180175669202964/IMG_5215.jpg";
-//        Picasso.get()
-//                .load(urlPic)
-//                .into(mProfileImage);
+        mProfileImage = findViewById(R.id.imagePrev);
+        String urlPic = currentUser.getProfilePic();
+        Picasso.get()
+                .load(urlPic)
+                .into(mProfileImage);
     }
 
     private void getUser() {
@@ -114,10 +112,6 @@ public class image extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.nav_home:
                     startActivity(new Intent(getApplicationContext(), MainHomePage.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                case R.id.nav_discovery:
-                    startActivity(new Intent(getApplicationContext(), genres.class));
                     overridePendingTransition(0, 0);
                     return true;
                 case R.id.nav_search:

@@ -30,15 +30,15 @@
         android:hint="@string/save_image"
         app:layout_constraintStart_toEndOf="@id/imagePrev"
         app:layout_constraintTop_toTopOf="parent" />
-    <Button
-        android:id="@+id/refresh"
-        android:layout_width="150dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="104dp"
-        android:hint="@string/preview_image"
-        app:layout_constraintStart_toEndOf="@id/imagePrev"
-        app:layout_constraintTop_toTopOf="@id/saveImage" />
+<!--    <Button-->
+<!--        android:id="@+id/refresh"-->
+<!--        android:layout_width="150dp"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:layout_marginStart="76dp"-->
+<!--        android:layout_marginTop="104dp"-->
+<!--        android:hint="@string/preview_image"-->
+<!--        app:layout_constraintStart_toEndOf="@id/imagePrev"-->
+<!--        app:layout_constraintTop_toTopOf="@id/saveImage" />-->
 
     <!--    <ImageView-->
 <!--        android:id="@+id/image1"-->
@@ -133,7 +133,7 @@
         app:itemTextColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editProfile"
+        app:layout_constraintTop_toBottomOf="@+id/saveImage"
         app:layout_constraintVertical_bias="0.995"
         app:menu="@menu/nav_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,7 @@ import com.squareup.picasso.Picasso;
 public class editProfile extends AppCompatActivity {
 
     private Button mBack;
+    private ImageView mProfile;
     private Button mSave;
     private Button mPicture;
     private EditText mEditUsername;
@@ -74,12 +75,11 @@ public class editProfile extends AppCompatActivity {
                 Log.e(TAG, "User not found");
             }
             else{
-                //urlPic = mUrl.getText().toString.trim();
-                mprofilepic = findViewById(R.id.editPic);
-                String urlPic = "https://cdn.discordapp.com/attachments/1020212941146042399/1103180175669202964/IMG_5215.jpg";
+                mProfile = findViewById(R.id.editPic);
+                String urlPic = currentUser.getProfilePic();
                 Picasso.get()
                         .load(urlPic)
-                        .into(mprofilepic);
+                        .into(mProfile);
 
             }
         }else{
