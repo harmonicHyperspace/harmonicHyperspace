@@ -28,7 +28,12 @@ public class logIn extends AppCompatActivity {
     private String mUsername;
     private String mPassword;
     private harmonicHyperspaceDAO mHarmonicHyperspaceDAO;
-    private User mUser;
+    public User mUser;
+
+    private static final String USER_ID_KEY = "com.example.harmonichyperspace.useridKey";
+    private static final String PREFRENCE_KEY = "com.example.harmonichyperspace.preferenceKey";
+
+    private SharedPreferences mPreferences = null;
 
     public static Intent intentFactory(Context context) {
         Intent intent = new Intent(context, logIn.class);
@@ -42,8 +47,8 @@ public class logIn extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
 
         wireupDisplay();
-
         getDatabase();
+
     }
 
     private void wireupDisplay() {
@@ -60,7 +65,7 @@ public class logIn extends AppCompatActivity {
                     if (!validatePassword()) {
                         Toast.makeText(getApplicationContext(), "Incorrect password", Toast.LENGTH_SHORT).show();
                     } else {
-                        saveUserId(mUser.getUserId());
+                        addUserToPreference(mUser.getUserId());
                         Intent intent = MainHomePage.intentFactory(getApplicationContext(), mUser.getUserId());
                         startActivity(intent);
                     }
@@ -72,6 +77,19 @@ public class logIn extends AppCompatActivity {
 
     private boolean validatePassword() {
         return mUser.getPassword().equals(mPassword);
+    }
+
+    private void addUserToPreference(int userId){
+        if (mPreferences == null){
+            getPrefs();
+        }
+        SharedPreferences.Editor editor = mPreferences.edit();
+        editor.putInt(USER_ID_KEY, userId);
+        editor.apply();
+    }
+
+    private void getPrefs() {
+        mPreferences = this.getSharedPreferences(PREFRENCE_KEY,Context.MODE_PRIVATE);
     }
 
     private boolean checkForUserInDatabase() {
@@ -98,10 +116,10 @@ public class logIn extends AppCompatActivity {
 
     }
 
-    private void saveUserId(int userId) {
-        SharedPreferences sharedPreferences = getSharedPreferences("hyperspaceData", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("userId", String.valueOf(userId));
-        editor.apply();
-    }
+//    private void saveUserId(int userId) {
+//        SharedPreferences sharedPreferences = getSharedPreferences("hyperspaceData", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("userId", String.valueOf(userId));
+//        editor.apply();
+//    }
 }

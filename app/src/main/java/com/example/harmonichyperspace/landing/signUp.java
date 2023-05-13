@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import com.example.harmonichyperspace.DB.DatabaseCallback;
 import com.example.harmonichyperspace.DB.User;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDAO;
 import com.example.harmonichyperspace.DB.harmonicHyperspaceDatabase;
@@ -33,8 +34,11 @@ public class signUp extends AppCompatActivity {
     private String email;
     private User mUser;
     private User mEmail;
-
+    private static final String USER_ID_KEY = "com.example.harmonichyperspace.useridKey";
+    private static final String PREFRENCE_KEY = "com.example.harmonichyperspace.preferenceKey";
     private harmonicHyperspaceDAO mHarmonicHyperspaceDAO;
+    private SharedPreferences mPreferences = null;
+
 
     public static Intent intentFactory(Context context) {
         Intent intent = new Intent(context, signUp.class);
@@ -47,14 +51,13 @@ public class signUp extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_sign_up);
 
-        harmonicHyperspaceDatabase db = harmonicHyperspaceDatabase.getInstance(this);
-        mHarmonicHyperspaceDAO = db.harmonicHyperspaceDAO();
-
-        wiringUpDisplay();
-        mHarmonicHyperspaceDAO = Room.databaseBuilder(this, harmonicHyperspaceDatabase.class, harmonicHyperspaceDatabase.DATABASE_NAME)
+        mHarmonicHyperspaceDAO = Room.databaseBuilder(this, harmonicHyperspaceDatabase.class, "harmonicHyperspace.db")
                 .allowMainThreadQueries()
+                .addCallback(new DatabaseCallback(this))
                 .build()
                 .harmonicHyperspaceDAO();
+
+        wiringUpDisplay();
     }
 
     private void wiringUpDisplay() {
@@ -85,6 +88,20 @@ public class signUp extends AppCompatActivity {
 //        });
     }
 
+    private void addUserToPreference(int userId) {
+        if (mPreferences == null){
+            getPrefs();
+        }
+        SharedPreferences.Editor editor = mPreferences.edit();
+        editor.putInt(USER_ID_KEY, userId);
+        editor.apply();
+    }
+
+    private void getPrefs() {
+        mPreferences = this.getSharedPreferences(PREFRENCE_KEY,Context.MODE_PRIVATE);
+
+    }
+
     private boolean emailInDataBase() {
         mEmail = mHarmonicHyperspaceDAO.getUserByEmail(email);
         if (mEmail != null) {
@@ -112,11 +129,12 @@ public class signUp extends AppCompatActivity {
 
     private void createUser() {
 
-        User newUser = new User(username, password, email, false);
+        mUser = new User(username, password, email, false);
 
         if (mHarmonicHyperspaceDAO != null) {
-            mHarmonicHyperspaceDAO.insert(newUser);
-            saveUserId(newUser.getUserId());
+            mHarmonicHyperspaceDAO.insert(mUser);
+            mUser = mHarmonicHyperspaceDAO.getUserByUsername(username);
+            addUserToPreference(mUser.getUserId());
         } else {
             Log.e(TAG, "DAO object is null");
         }
@@ -127,10 +145,10 @@ public class signUp extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void saveUserId(int userId) {
-        SharedPreferences sharedPreferences = getSharedPreferences("hyperspaceData", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("userId", String.valueOf(userId));
-        editor.apply();
-    }
+//    private void saveUserId(int userId) {
+//        SharedPreferences sharedPreferences = getSharedPreferences("hyperspaceData", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("userId", String.valueOf(userId));
+//        editor.apply();
+    //}
 }

@@ -1,116 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".profile.profile">
 
-    <RelativeLayout
+
+    <ImageView
+        android:id="@+id/profilePic"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/profileInfo"
+        android:layout_width="221dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="112dp"
+        android:text="@string/bio"
+        app:layout_constraintBottom_toTopOf="@+id/editProfile"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/Logout"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="24dp"
+        android:hint="@string/Logout"
+        app:layout_constraintBottom_toTopOf="@+id/profileInfo"
+        app:layout_constraintStart_toEndOf="@+id/profilePic" />
+
+    <Button
+        android:id="@+id/editProfile"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="68dp"
+        android:hint="@string/edit_profile2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profilePic" />
+
+    <TextView
+        android:id="@+id/usernameView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="16dp"
+        android:text="@string/username"
+        app:layout_constraintBottom_toTopOf="@+id/profileInfo"
+        app:layout_constraintStart_toEndOf="@+id/profilePic" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/profilePic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="19dp"
-            android:layout_marginTop="47dp"
-            android:layout_marginEnd="11dp"
-            android:layout_marginBottom="11dp"
-            app:layout_constraintBottom_toTopOf="@+id/usernameView"
-            app:layout_constraintEnd_toStartOf="@+id/profileInfo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/usernameLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="151dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="198dp"
-            android:layout_marginBottom="29dp"
-            android:text="@string/username"
-            app:layout_constraintBottom_toTopOf="@+id/profileInfo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/profileInfo"
-            android:layout_width="221dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="114dp"
-            android:text="@string/profileView"
-            app:layout_constraintBottom_toTopOf="@+id/editProfile"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/profilePic"
-            app:layout_constraintTop_toBottomOf="@+id/usernameLogo" />
-
-        <TextView
-            android:id="@+id/usernameView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="52dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginEnd="297dp"
-            android:layout_marginBottom="23dp"
-            android:text="@string/username"
-            app:layout_constraintBottom_toTopOf="@+id/editProfile"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profilePic" />
-
-        <Button
-            android:id="@+id/editProfile"
-            android:layout_width="246dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="96dp"
-            android:layout_marginBottom="36dp"
-            android:text="@string/editBtn"
-            app:layout_constraintBottom_toTopOf="@+id/recentActivityView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usernameView" />
-
-        <TextView
-            android:id="@+id/recentActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="82dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="19dp"
-            android:text="@string/recent_activity"
-            app:layout_constraintBottom_toTopOf="@+id/recentActivityView"
-            app:layout_constraintEnd_toStartOf="@+id/editProfile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usernameView" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recentActivityView"
-            android:layout_width="match_parent"
-            android:layout_height="578dp"
-            android:layout_marginBottom="1dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="?android:attr/windowBackground"
-            app:itemBackground="@color/black"
-            app:itemIconTint="#fff"
-            app:itemTextColor="#fff"
-            app:menu="@menu/nav_menu" />
-    </RelativeLayout>
-</FrameLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="184dp"
+        android:background="?android:attr/windowBackground"
+        app:itemBackground="@color/black"
+        app:itemIconTint="#fff"
+        app:itemTextColor="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editProfile"
+        app:layout_constraintVertical_bias="0.995"
+        app:menu="@menu/nav_menu" />
+</androidx.constraintlayout.widget.ConstraintLayout>
